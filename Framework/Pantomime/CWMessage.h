@@ -28,7 +28,7 @@
 #include <Pantomime/CWPart.h>
 
 #import <Foundation/NSArray.h>
-#import <Foundation/NSCalendarDate.h>
+#import <Foundation/NSDate.h>
 #import <Foundation/NSCoder.h>
 #import <Foundation/NSData.h>
 #import <Foundation/NSDictionary.h>
@@ -188,7 +188,7 @@ extern NSString* PantomimeMessageExpunged;
               the "Date" header.
   @result The value of the "Date" header, as a NSCalendarDate instance.
 */
-- (NSCalendarDate *) receivedDate;
+- (NSDate *) receivedDate;
 
 /*!
   @method setReceivedDate:
@@ -196,7 +196,7 @@ extern NSString* PantomimeMessageExpunged;
               the "Date" header.
   @param theDate The NSCalendarDate instance.
 */
-- (void) setReceivedDate: (NSCalendarDate *) theDate;
+- (void) setReceivedDate: (NSDate *) theDate;
 
 /*!
   @method addRecipient:
@@ -466,7 +466,7 @@ extern NSString* PantomimeMessageExpunged;
               "Resent-Date" header.
   @result The value of the "Resent-Date" header.
 */
-- (NSCalendarDate *) resentDate;
+- (NSDate *) resentDate;
 
 /*!
   @method setResentDate:
@@ -474,7 +474,7 @@ extern NSString* PantomimeMessageExpunged;
               "Resent-Date" header.
   @param theResentDate The new value of the header.
 */
-- (void) setResentDate: (NSCalendarDate *) theResentDate;
+- (void) setResentDate: (NSDate *) theResentDate;
 
 /*!
   @method resentFrom

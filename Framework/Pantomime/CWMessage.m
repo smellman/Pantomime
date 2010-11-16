@@ -369,7 +369,7 @@ static CWRegEx *prefixSubjFwdHdrAndSuffixSubjFwdTrlRegex;
 //
 //
 //
-- (NSCalendarDate *) receivedDate
+- (NSDate *) receivedDate
 {
   return [_headers objectForKey: @"Date"];
 }
@@ -378,7 +378,7 @@ static CWRegEx *prefixSubjFwdHdrAndSuffixSubjFwdTrlRegex;
 //
 //
 //
-- (void) setReceivedDate: (NSCalendarDate*) theDate
+- (void) setReceivedDate: (NSDate *) theDate
 {
   if (theDate)
     {
@@ -1051,7 +1051,7 @@ static CWRegEx *prefixSubjFwdHdrAndSuffixSubjFwdTrlRegex;
   NSEnumerator *allHeaderKeyEnumerator;
   NSString *aKey;
 
-  NSCalendarDate *aCalendarDate;
+  NSDate *aCalendarDate;
   NSData *aBoundary, *aData;
 
 
@@ -1072,7 +1072,8 @@ static CWRegEx *prefixSubjFwdHdrAndSuffixSubjFwdTrlRegex;
   // new message.
   aMutableData = [[NSMutableData alloc] init];
   aBoundary = [CWMIMEUtility globallyUniqueBoundary];
-  
+
+    /*
 #ifndef MACOSX
   if ([[NSUserDefaults standardUserDefaults] objectForKey: @"Local Time Zone"])
     {
@@ -1090,6 +1091,8 @@ static CWRegEx *prefixSubjFwdHdrAndSuffixSubjFwdTrlRegex;
   aCalendarDate = [[NSDate date] dateWithCalendarFormat: @"%a, %d %b %Y %H:%M:%S %z"
 				 timeZone: [NSTimeZone systemTimeZone]];
 #endif
+     */
+  aCalendarDate = [NSDate date];
   [aMutableData appendCFormat: @"Date: %@%s", [aCalendarDate descriptionWithLocale: aLocale], LF];
   
   // We set the subject, if we have one!
@@ -1253,7 +1256,7 @@ static CWRegEx *prefixSubjFwdHdrAndSuffixSubjFwdTrlRegex;
 //
 //
 //
-- (NSCalendarDate *) resentDate
+- (NSDate *) resentDate
 {
   return [_headers objectForKey: @"Resent-Date"];
 }
@@ -1262,7 +1265,7 @@ static CWRegEx *prefixSubjFwdHdrAndSuffixSubjFwdTrlRegex;
 //
 //
 //
-- (void) setResentDate: (NSCalendarDate *) theResentDate
+- (void) setResentDate: (NSDate *) theResentDate
 {
   [_headers setObject: theResentDate  forKey: @"Resent-Date"];
 }
