@@ -436,7 +436,7 @@
   if (![aMutableData hasCPrefix: "From "] && _type == PantomimeFormatMbox)
     {
       NSString *aSender, *aString;
-      NSCalendarDate *aDate;
+      NSDate *aDate;
 
       // We get a valid sender. We can't use the envelope sender
       // so let's use the From: header instead.
@@ -457,11 +457,12 @@
 
       if (!aDate)
 	{
-	  aDate = [NSCalendarDate calendarDate];
+	  aDate = [NSDate date];
 	}
-      
+      NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+      [dateFormatter setFormat:@"%a %b %d %H:%M:%S %Y"];
       aString = [NSString stringWithFormat: @"From %@ %@\n", aSender, 
-			  [aDate descriptionWithCalendarFormat: @"%a %b %d %H:%M:%S %Y"]];
+			  [dateFormatter stringFromDate:aDate];
       [aMutableData insertCString: [aString cString] atIndex: 0];
     }
   
