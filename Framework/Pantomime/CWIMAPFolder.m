@@ -82,7 +82,7 @@
 //
 - (void) appendMessageFromRawSource: (NSData *) theData
                               flags: (CWFlags *) theFlags
-		       internalDate: (NSCalendarDate *) theDate
+                       internalDate: (NSDate *) theDate
 {
   NSDictionary *aDictionary;
   NSString *flagsAsString;
@@ -112,12 +112,14 @@
   
   if (theDate)
     {
+      NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+      [dateFormatter setDateFormat:@"%d-%b-%Y %H:%M:%S %z"];
       [_store sendCommand: IMAP_APPEND
 	      info: aDictionary
 	      arguments: @"APPEND \"%@\" (%@) \"%@\" {%d}",                    // IMAP command
 	      [_name modifiedUTF7String],                                      // folder name
 	      flagsAsString,                                                   // flags
-	      [theDate descriptionWithCalendarFormat:@"%d-%b-%Y %H:%M:%S %z"], // internal date
+          [dateFormatter stringFromDate:theDate], // internal date
 	      [aData length]];                                                 // length of the data to write
     }
   else
