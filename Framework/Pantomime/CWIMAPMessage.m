@@ -27,7 +27,7 @@
 #include <Pantomime/CWIMAPFolder.h>
 #include <Pantomime/CWIMAPStore.h>
 
-#include <Foundation/NSDebug.h>
+//#include <Foundation/NSDebug.h>
 #include <Foundation/NSException.h>
 #include <Foundation/NSValue.h>
 
