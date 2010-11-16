@@ -25,7 +25,7 @@
 #include <Pantomime/CWConstants.h>
 #include <Pantomime/CWPOP3CacheObject.h>
 
-#include <Foundation/NSArchiver.h>
+#include <Foundation/NSKeyedArchiver.h>
 #include <Foundation/NSException.h>
 #include <Pantomime/io.h>
 
@@ -56,7 +56,7 @@ static unsigned short version = 1;
   id o;
 
   // 'o' will be decoded as a CWPOP3CacheManager instance.
-  o = [NSUnarchiver unarchiveObjectWithFile: theFile];
+  o = [NSKeyedUnarchiver unarchiveObjectWithFile: theFile];
 
   if (o)
     {

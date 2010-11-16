@@ -29,7 +29,7 @@
 #include <Pantomime/CWIMAPMessage.h>
 #include <Pantomime/CWParser.h>
 
-#include <Foundation/NSArchiver.h>
+//#include <Foundation/NSArchiver.h>
 #include <Foundation/NSException.h>
 #include <Foundation/NSValue.h>
 

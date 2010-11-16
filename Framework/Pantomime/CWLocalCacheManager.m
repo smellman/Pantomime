@@ -30,7 +30,7 @@
 #include <Pantomime/CWParser.h>
 #include <Pantomime/NSData+Extensions.h>
 
-#include <Foundation/NSArchiver.h>
+//#include <Foundation/NSArchiver.h>
 #include <Foundation/NSException.h>
 #include <Foundation/NSFileManager.h>
 #include <Foundation/NSNull.h>

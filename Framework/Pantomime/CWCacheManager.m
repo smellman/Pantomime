@@ -23,7 +23,7 @@
 #include <Pantomime/CWCacheManager.h>
 #include <Pantomime/CWConstants.h>
 
-#include <Foundation/NSArchiver.h>
+#include <Foundation/NSKeyedArchiver.h>
 #include <Foundation/NSException.h>
 
 @implementation CWCacheManager
@@ -100,7 +100,7 @@
 
   NS_DURING
     {
-      b = [NSArchiver archiveRootObject: self  toFile: _path];
+      b = [NSKeyedArchiver archiveRootObject: self  toFile: _path];
     }
   NS_HANDLER
     {
