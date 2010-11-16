@@ -141,7 +141,7 @@ static unsigned short version = 1;
     
       for (i = 0; i < _count; i++)
 	{
-	  aDate = [NSCalendarDate dateWithTimeIntervalSince1970: read_unsigned_int(_fd)];
+	  aDate = [NSDate dateWithTimeIntervalSince1970: read_unsigned_int(_fd)];
 	  read_string(_fd, s, &len);	  
 
 	  aUID = AUTORELEASE([[NSString alloc] initWithData: [NSData dataWithBytes: s  length: len]
@@ -250,7 +250,7 @@ static unsigned short version = 1;
   write_string(_fd, (unsigned char *)[aData bytes], [aData length]);
   
   
-  NSMapInsert(_table, theRecord->pop3_uid, [NSCalendarDate dateWithTimeIntervalSince1970: theRecord->date]);
+  NSMapInsert(_table, theRecord->pop3_uid, [NSDate dateWithTimeIntervalSince1970: theRecord->date]);
   _count++;
 }
 
