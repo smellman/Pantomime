@@ -1,0 +1,824 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		535F4A4D12926A5700953978 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 535F4A4C12926A5700953978 /* CoreFoundation.framework */; };
+		535F4A7A129271D500953978 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 535F4A79129271D500953978 /* UIKit.framework */; };
+		535F4B041292725200953978 /* CWCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A7D1292725200953978 /* CWCacheManager.h */; };
+		535F4B051292725200953978 /* CWCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A7E1292725200953978 /* CWCacheManager.m */; };
+		535F4B061292725200953978 /* CWCharset.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A7F1292725200953978 /* CWCharset.h */; };
+		535F4B071292725200953978 /* CWCharset.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A801292725200953978 /* CWCharset.m */; };
+		535F4B081292725200953978 /* CWConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A811292725200953978 /* CWConnection.h */; };
+		535F4B091292725200953978 /* CWConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A821292725200953978 /* CWConstants.h */; };
+		535F4B0A1292725200953978 /* CWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A831292725200953978 /* CWConstants.m */; };
+		535F4B0B1292725200953978 /* CWContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A841292725200953978 /* CWContainer.h */; };
+		535F4B0C1292725200953978 /* CWContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A851292725200953978 /* CWContainer.m */; };
+		535F4B0D1292725200953978 /* CWDNSManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A861292725200953978 /* CWDNSManager.h */; };
+		535F4B0E1292725200953978 /* CWDNSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A871292725200953978 /* CWDNSManager.m */; };
+		535F4B0F1292725200953978 /* CWFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A881292725200953978 /* CWFlags.h */; };
+		535F4B101292725200953978 /* CWFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A891292725200953978 /* CWFlags.m */; };
+		535F4B111292725200953978 /* CWFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A8A1292725200953978 /* CWFolder.h */; };
+		535F4B121292725200953978 /* CWFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A8B1292725200953978 /* CWFolder.m */; };
+		535F4B131292725200953978 /* CWFolderInformation.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A8C1292725200953978 /* CWFolderInformation.h */; };
+		535F4B141292725200953978 /* CWFolderInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A8D1292725200953978 /* CWFolderInformation.m */; };
+		535F4B151292725200953978 /* CWIMAPCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A8E1292725200953978 /* CWIMAPCacheManager.h */; };
+		535F4B161292725200953978 /* CWIMAPCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A8F1292725200953978 /* CWIMAPCacheManager.m */; };
+		535F4B171292725200953978 /* CWIMAPFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A901292725200953978 /* CWIMAPFolder.h */; };
+		535F4B181292725200953978 /* CWIMAPFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A911292725200953978 /* CWIMAPFolder.m */; };
+		535F4B191292725200953978 /* CWIMAPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A921292725200953978 /* CWIMAPMessage.h */; };
+		535F4B1A1292725200953978 /* CWIMAPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A931292725200953978 /* CWIMAPMessage.m */; };
+		535F4B1B1292725200953978 /* CWIMAPStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A941292725200953978 /* CWIMAPStore.h */; };
+		535F4B1C1292725200953978 /* CWIMAPStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A951292725200953978 /* CWIMAPStore.m */; };
+		535F4B1D1292725200953978 /* CWInternetAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A961292725200953978 /* CWInternetAddress.h */; };
+		535F4B1E1292725200953978 /* CWInternetAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A971292725200953978 /* CWInternetAddress.m */; };
+		535F4B1F1292725200953978 /* CWISO8859_1.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A981292725200953978 /* CWISO8859_1.h */; };
+		535F4B201292725200953978 /* CWISO8859_1.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A991292725200953978 /* CWISO8859_1.m */; };
+		535F4B211292725200953978 /* CWISO8859_2.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A9A1292725200953978 /* CWISO8859_2.h */; };
+		535F4B221292725200953978 /* CWISO8859_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A9B1292725200953978 /* CWISO8859_2.m */; };
+		535F4B231292725200953978 /* CWISO8859_3.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A9C1292725200953978 /* CWISO8859_3.h */; };
+		535F4B241292725200953978 /* CWISO8859_3.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A9D1292725200953978 /* CWISO8859_3.m */; };
+		535F4B251292725200953978 /* CWISO8859_4.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4A9E1292725200953978 /* CWISO8859_4.h */; };
+		535F4B261292725200953978 /* CWISO8859_4.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4A9F1292725200953978 /* CWISO8859_4.m */; };
+		535F4B271292725200953978 /* CWISO8859_5.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AA01292725200953978 /* CWISO8859_5.h */; };
+		535F4B281292725200953978 /* CWISO8859_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AA11292725200953978 /* CWISO8859_5.m */; };
+		535F4B291292725200953978 /* CWISO8859_6.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AA21292725200953978 /* CWISO8859_6.h */; };
+		535F4B2A1292725200953978 /* CWISO8859_6.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AA31292725200953978 /* CWISO8859_6.m */; };
+		535F4B2B1292725200953978 /* CWISO8859_7.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AA41292725200953978 /* CWISO8859_7.h */; };
+		535F4B2C1292725200953978 /* CWISO8859_7.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AA51292725200953978 /* CWISO8859_7.m */; };
+		535F4B2D1292725200953978 /* CWISO8859_8.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AA61292725200953978 /* CWISO8859_8.h */; };
+		535F4B2E1292725200953978 /* CWISO8859_8.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AA71292725200953978 /* CWISO8859_8.m */; };
+		535F4B2F1292725200953978 /* CWISO8859_9.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AA81292725200953978 /* CWISO8859_9.h */; };
+		535F4B301292725200953978 /* CWISO8859_9.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AA91292725200953978 /* CWISO8859_9.m */; };
+		535F4B311292725200953978 /* CWISO8859_10.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AAA1292725200953978 /* CWISO8859_10.h */; };
+		535F4B321292725200953978 /* CWISO8859_10.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AAB1292725200953978 /* CWISO8859_10.m */; };
+		535F4B331292725200953978 /* CWISO8859_11.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AAC1292725200953978 /* CWISO8859_11.h */; };
+		535F4B341292725200953978 /* CWISO8859_11.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AAD1292725200953978 /* CWISO8859_11.m */; };
+		535F4B351292725200953978 /* CWISO8859_13.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AAE1292725200953978 /* CWISO8859_13.h */; };
+		535F4B361292725200953978 /* CWISO8859_13.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AAF1292725200953978 /* CWISO8859_13.m */; };
+		535F4B371292725200953978 /* CWISO8859_14.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AB01292725200953978 /* CWISO8859_14.h */; };
+		535F4B381292725200953978 /* CWISO8859_14.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AB11292725200953978 /* CWISO8859_14.m */; };
+		535F4B391292725200953978 /* CWISO8859_15.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AB21292725200953978 /* CWISO8859_15.h */; };
+		535F4B3A1292725200953978 /* CWISO8859_15.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AB31292725200953978 /* CWISO8859_15.m */; };
+		535F4B3B1292725200953978 /* CWKOI8_R.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AB41292725200953978 /* CWKOI8_R.h */; };
+		535F4B3C1292725200953978 /* CWKOI8_R.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AB51292725200953978 /* CWKOI8_R.m */; };
+		535F4B3D1292725200953978 /* CWKOI8_U.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AB61292725200953978 /* CWKOI8_U.h */; };
+		535F4B3E1292725200953978 /* CWKOI8_U.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AB71292725200953978 /* CWKOI8_U.m */; };
+		535F4B3F1292725200953978 /* CWLocalCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AB81292725200953978 /* CWLocalCacheManager.h */; };
+		535F4B401292725200953978 /* CWLocalCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AB91292725200953978 /* CWLocalCacheManager.m */; };
+		535F4B411292725200953978 /* CWLocalFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ABA1292725200953978 /* CWLocalFolder.h */; };
+		535F4B421292725200953978 /* CWLocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ABB1292725200953978 /* CWLocalFolder.m */; };
+		535F4B431292725200953978 /* CWLocalFolder+maildir.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ABC1292725200953978 /* CWLocalFolder+maildir.h */; };
+		535F4B441292725200953978 /* CWLocalFolder+maildir.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ABD1292725200953978 /* CWLocalFolder+maildir.m */; };
+		535F4B451292725200953978 /* CWLocalFolder+mbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ABE1292725200953978 /* CWLocalFolder+mbox.h */; };
+		535F4B461292725200953978 /* CWLocalFolder+mbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ABF1292725200953978 /* CWLocalFolder+mbox.m */; };
+		535F4B471292725200953978 /* CWLocalMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AC01292725200953978 /* CWLocalMessage.h */; };
+		535F4B481292725200953978 /* CWLocalMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AC11292725200953978 /* CWLocalMessage.m */; };
+		535F4B491292725200953978 /* CWLocalStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AC21292725200953978 /* CWLocalStore.h */; };
+		535F4B4A1292725200953978 /* CWLocalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AC31292725200953978 /* CWLocalStore.m */; };
+		535F4B4B1292725200953978 /* CWMacOSXGlue.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AC41292725200953978 /* CWMacOSXGlue.h */; };
+		535F4B4C1292725200953978 /* CWMacOSXGlue.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AC51292725200953978 /* CWMacOSXGlue.m */; };
+		535F4B4D1292725200953978 /* CWMD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AC61292725200953978 /* CWMD5.h */; };
+		535F4B4E1292725200953978 /* CWMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AC71292725200953978 /* CWMD5.m */; };
+		535F4B4F1292725200953978 /* CWMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AC81292725200953978 /* CWMessage.h */; };
+		535F4B501292725200953978 /* CWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AC91292725200953978 /* CWMessage.m */; };
+		535F4B511292725200953978 /* CWMIMEMultipart.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ACA1292725200953978 /* CWMIMEMultipart.h */; };
+		535F4B521292725200953978 /* CWMIMEMultipart.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ACB1292725200953978 /* CWMIMEMultipart.m */; };
+		535F4B531292725200953978 /* CWMIMEUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ACC1292725200953978 /* CWMIMEUtility.h */; };
+		535F4B541292725200953978 /* CWMIMEUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ACD1292725200953978 /* CWMIMEUtility.m */; };
+		535F4B551292725200953978 /* CWParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ACE1292725200953978 /* CWParser.h */; };
+		535F4B561292725200953978 /* CWParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ACF1292725200953978 /* CWParser.m */; };
+		535F4B571292725200953978 /* CWPart.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AD01292725200953978 /* CWPart.h */; };
+		535F4B581292725200953978 /* CWPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AD11292725200953978 /* CWPart.m */; };
+		535F4B591292725200953978 /* CWPOP3CacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AD21292725200953978 /* CWPOP3CacheManager.h */; };
+		535F4B5A1292725200953978 /* CWPOP3CacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AD31292725200953978 /* CWPOP3CacheManager.m */; };
+		535F4B5B1292725200953978 /* CWPOP3CacheObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AD41292725200953978 /* CWPOP3CacheObject.h */; };
+		535F4B5C1292725200953978 /* CWPOP3CacheObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AD51292725200953978 /* CWPOP3CacheObject.m */; };
+		535F4B5D1292725200953978 /* CWPOP3Folder.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AD61292725200953978 /* CWPOP3Folder.h */; };
+		535F4B5E1292725200953978 /* CWPOP3Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AD71292725200953978 /* CWPOP3Folder.m */; };
+		535F4B5F1292725200953978 /* CWPOP3Message.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AD81292725200953978 /* CWPOP3Message.h */; };
+		535F4B601292725200953978 /* CWPOP3Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AD91292725200953978 /* CWPOP3Message.m */; };
+		535F4B611292725200953978 /* CWPOP3Store.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ADA1292725200953978 /* CWPOP3Store.h */; };
+		535F4B621292725200953978 /* CWPOP3Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ADB1292725200953978 /* CWPOP3Store.m */; };
+		535F4B631292725200953978 /* CWRegEx.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ADC1292725200953978 /* CWRegEx.h */; };
+		535F4B641292725200953978 /* CWRegEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ADD1292725200953978 /* CWRegEx.m */; };
+		535F4B651292725200953978 /* CWSendmail.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4ADE1292725200953978 /* CWSendmail.h */; };
+		535F4B661292725200953978 /* CWSendmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4ADF1292725200953978 /* CWSendmail.m */; };
+		535F4B671292725200953978 /* CWService.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AE01292725200953978 /* CWService.h */; };
+		535F4B681292725200953978 /* CWService.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AE11292725200953978 /* CWService.m */; };
+		535F4B691292725200953978 /* CWSMTP.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AE21292725200953978 /* CWSMTP.h */; };
+		535F4B6A1292725200953978 /* CWSMTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AE31292725200953978 /* CWSMTP.m */; };
+		535F4B6B1292725200953978 /* CWStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AE41292725200953978 /* CWStore.h */; };
+		535F4B6C1292725200953978 /* CWTCPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AE51292725200953978 /* CWTCPConnection.h */; };
+		535F4B6D1292725200953978 /* CWTCPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AE61292725200953978 /* CWTCPConnection.m */; };
+		535F4B6E1292725200953978 /* CWTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AE71292725200953978 /* CWTransport.h */; };
+		535F4B6F1292725200953978 /* CWURLName.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AE81292725200953978 /* CWURLName.h */; };
+		535F4B701292725200953978 /* CWURLName.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AE91292725200953978 /* CWURLName.m */; };
+		535F4B711292725200953978 /* CWUUFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AEA1292725200953978 /* CWUUFile.h */; };
+		535F4B721292725200953978 /* CWUUFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AEB1292725200953978 /* CWUUFile.m */; };
+		535F4B731292725200953978 /* CWVirtualFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AEC1292725200953978 /* CWVirtualFolder.h */; };
+		535F4B741292725200953978 /* CWVirtualFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AED1292725200953978 /* CWVirtualFolder.m */; };
+		535F4B751292725200953978 /* CWWINDOWS_1250.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AEE1292725200953978 /* CWWINDOWS_1250.h */; };
+		535F4B761292725200953978 /* CWWINDOWS_1250.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AEF1292725200953978 /* CWWINDOWS_1250.m */; };
+		535F4B771292725200953978 /* CWWINDOWS_1251.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AF01292725200953978 /* CWWINDOWS_1251.h */; };
+		535F4B781292725200953978 /* CWWINDOWS_1251.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AF11292725200953978 /* CWWINDOWS_1251.m */; };
+		535F4B791292725200953978 /* CWWINDOWS_1252.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AF21292725200953978 /* CWWINDOWS_1252.h */; };
+		535F4B7A1292725200953978 /* CWWINDOWS_1252.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AF31292725200953978 /* CWWINDOWS_1252.m */; };
+		535F4B7B1292725200953978 /* CWWINDOWS_1253.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AF41292725200953978 /* CWWINDOWS_1253.h */; };
+		535F4B7C1292725200953978 /* CWWINDOWS_1253.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AF51292725200953978 /* CWWINDOWS_1253.m */; };
+		535F4B7D1292725200953978 /* CWWINDOWS_1254.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AF61292725200953978 /* CWWINDOWS_1254.h */; };
+		535F4B7E1292725200953978 /* CWWINDOWS_1254.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AF71292725200953978 /* CWWINDOWS_1254.m */; };
+		535F4B7F1292725200953978 /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AF91292725200953978 /* io.c */; };
+		535F4B801292725200953978 /* io.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AFA1292725200953978 /* io.h */; };
+		535F4B811292725200953978 /* NSData+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AFB1292725200953978 /* NSData+Extensions.h */; };
+		535F4B821292725200953978 /* NSData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AFC1292725200953978 /* NSData+Extensions.m */; };
+		535F4B831292725200953978 /* NSFileManager+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AFD1292725200953978 /* NSFileManager+Extensions.h */; };
+		535F4B841292725200953978 /* NSFileManager+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4AFE1292725200953978 /* NSFileManager+Extensions.m */; };
+		535F4B851292725200953978 /* NSScanner+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4AFF1292725200953978 /* NSScanner+Extensions.h */; };
+		535F4B861292725200953978 /* NSScanner+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4B001292725200953978 /* NSScanner+Extensions.m */; };
+		535F4B871292725200953978 /* NSString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4B011292725200953978 /* NSString+Extensions.h */; };
+		535F4B881292725200953978 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4B021292725200953978 /* NSString+Extensions.m */; };
+		535F4B891292725200953978 /* Pantomime.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4B031292725200953978 /* Pantomime.h */; };
+		AA747D9F0F9514B9006C5449 /* Pantomime_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Pantomime_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		535F4BAF1292747600953978 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 535F4B941292743600953978 /* openssl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9069D28C0FCE659A0042E34C /* libcrypto.a */;
+			remoteInfo = crypto;
+		};
+		535F4BB3129274B400953978 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 535F4B941292743600953978 /* openssl.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9069D28B0FCE659A0042E34C /* crypto */;
+			remoteInfo = crypto;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		535F4A4C12926A5700953978 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		535F4A79129271D500953978 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		535F4A7D1292725200953978 /* CWCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWCacheManager.h; path = Framework/Pantomime/CWCacheManager.h; sourceTree = "<group>"; };
+		535F4A7E1292725200953978 /* CWCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWCacheManager.m; path = Framework/Pantomime/CWCacheManager.m; sourceTree = "<group>"; };
+		535F4A7F1292725200953978 /* CWCharset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWCharset.h; path = Framework/Pantomime/CWCharset.h; sourceTree = "<group>"; };
+		535F4A801292725200953978 /* CWCharset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWCharset.m; path = Framework/Pantomime/CWCharset.m; sourceTree = "<group>"; };
+		535F4A811292725200953978 /* CWConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWConnection.h; path = Framework/Pantomime/CWConnection.h; sourceTree = "<group>"; };
+		535F4A821292725200953978 /* CWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWConstants.h; path = Framework/Pantomime/CWConstants.h; sourceTree = "<group>"; };
+		535F4A831292725200953978 /* CWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWConstants.m; path = Framework/Pantomime/CWConstants.m; sourceTree = "<group>"; };
+		535F4A841292725200953978 /* CWContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWContainer.h; path = Framework/Pantomime/CWContainer.h; sourceTree = "<group>"; };
+		535F4A851292725200953978 /* CWContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWContainer.m; path = Framework/Pantomime/CWContainer.m; sourceTree = "<group>"; };
+		535F4A861292725200953978 /* CWDNSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWDNSManager.h; path = Framework/Pantomime/CWDNSManager.h; sourceTree = "<group>"; };
+		535F4A871292725200953978 /* CWDNSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWDNSManager.m; path = Framework/Pantomime/CWDNSManager.m; sourceTree = "<group>"; };
+		535F4A881292725200953978 /* CWFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWFlags.h; path = Framework/Pantomime/CWFlags.h; sourceTree = "<group>"; };
+		535F4A891292725200953978 /* CWFlags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWFlags.m; path = Framework/Pantomime/CWFlags.m; sourceTree = "<group>"; };
+		535F4A8A1292725200953978 /* CWFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWFolder.h; path = Framework/Pantomime/CWFolder.h; sourceTree = "<group>"; };
+		535F4A8B1292725200953978 /* CWFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWFolder.m; path = Framework/Pantomime/CWFolder.m; sourceTree = "<group>"; };
+		535F4A8C1292725200953978 /* CWFolderInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWFolderInformation.h; path = Framework/Pantomime/CWFolderInformation.h; sourceTree = "<group>"; };
+		535F4A8D1292725200953978 /* CWFolderInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWFolderInformation.m; path = Framework/Pantomime/CWFolderInformation.m; sourceTree = "<group>"; };
+		535F4A8E1292725200953978 /* CWIMAPCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWIMAPCacheManager.h; path = Framework/Pantomime/CWIMAPCacheManager.h; sourceTree = "<group>"; };
+		535F4A8F1292725200953978 /* CWIMAPCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWIMAPCacheManager.m; path = Framework/Pantomime/CWIMAPCacheManager.m; sourceTree = "<group>"; };
+		535F4A901292725200953978 /* CWIMAPFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWIMAPFolder.h; path = Framework/Pantomime/CWIMAPFolder.h; sourceTree = "<group>"; };
+		535F4A911292725200953978 /* CWIMAPFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWIMAPFolder.m; path = Framework/Pantomime/CWIMAPFolder.m; sourceTree = "<group>"; };
+		535F4A921292725200953978 /* CWIMAPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWIMAPMessage.h; path = Framework/Pantomime/CWIMAPMessage.h; sourceTree = "<group>"; };
+		535F4A931292725200953978 /* CWIMAPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWIMAPMessage.m; path = Framework/Pantomime/CWIMAPMessage.m; sourceTree = "<group>"; };
+		535F4A941292725200953978 /* CWIMAPStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWIMAPStore.h; path = Framework/Pantomime/CWIMAPStore.h; sourceTree = "<group>"; };
+		535F4A951292725200953978 /* CWIMAPStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWIMAPStore.m; path = Framework/Pantomime/CWIMAPStore.m; sourceTree = "<group>"; };
+		535F4A961292725200953978 /* CWInternetAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWInternetAddress.h; path = Framework/Pantomime/CWInternetAddress.h; sourceTree = "<group>"; };
+		535F4A971292725200953978 /* CWInternetAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWInternetAddress.m; path = Framework/Pantomime/CWInternetAddress.m; sourceTree = "<group>"; };
+		535F4A981292725200953978 /* CWISO8859_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_1.h; path = Framework/Pantomime/CWISO8859_1.h; sourceTree = "<group>"; };
+		535F4A991292725200953978 /* CWISO8859_1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_1.m; path = Framework/Pantomime/CWISO8859_1.m; sourceTree = "<group>"; };
+		535F4A9A1292725200953978 /* CWISO8859_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_2.h; path = Framework/Pantomime/CWISO8859_2.h; sourceTree = "<group>"; };
+		535F4A9B1292725200953978 /* CWISO8859_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_2.m; path = Framework/Pantomime/CWISO8859_2.m; sourceTree = "<group>"; };
+		535F4A9C1292725200953978 /* CWISO8859_3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_3.h; path = Framework/Pantomime/CWISO8859_3.h; sourceTree = "<group>"; };
+		535F4A9D1292725200953978 /* CWISO8859_3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_3.m; path = Framework/Pantomime/CWISO8859_3.m; sourceTree = "<group>"; };
+		535F4A9E1292725200953978 /* CWISO8859_4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_4.h; path = Framework/Pantomime/CWISO8859_4.h; sourceTree = "<group>"; };
+		535F4A9F1292725200953978 /* CWISO8859_4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_4.m; path = Framework/Pantomime/CWISO8859_4.m; sourceTree = "<group>"; };
+		535F4AA01292725200953978 /* CWISO8859_5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_5.h; path = Framework/Pantomime/CWISO8859_5.h; sourceTree = "<group>"; };
+		535F4AA11292725200953978 /* CWISO8859_5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_5.m; path = Framework/Pantomime/CWISO8859_5.m; sourceTree = "<group>"; };
+		535F4AA21292725200953978 /* CWISO8859_6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_6.h; path = Framework/Pantomime/CWISO8859_6.h; sourceTree = "<group>"; };
+		535F4AA31292725200953978 /* CWISO8859_6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_6.m; path = Framework/Pantomime/CWISO8859_6.m; sourceTree = "<group>"; };
+		535F4AA41292725200953978 /* CWISO8859_7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_7.h; path = Framework/Pantomime/CWISO8859_7.h; sourceTree = "<group>"; };
+		535F4AA51292725200953978 /* CWISO8859_7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_7.m; path = Framework/Pantomime/CWISO8859_7.m; sourceTree = "<group>"; };
+		535F4AA61292725200953978 /* CWISO8859_8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_8.h; path = Framework/Pantomime/CWISO8859_8.h; sourceTree = "<group>"; };
+		535F4AA71292725200953978 /* CWISO8859_8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_8.m; path = Framework/Pantomime/CWISO8859_8.m; sourceTree = "<group>"; };
+		535F4AA81292725200953978 /* CWISO8859_9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_9.h; path = Framework/Pantomime/CWISO8859_9.h; sourceTree = "<group>"; };
+		535F4AA91292725200953978 /* CWISO8859_9.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_9.m; path = Framework/Pantomime/CWISO8859_9.m; sourceTree = "<group>"; };
+		535F4AAA1292725200953978 /* CWISO8859_10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_10.h; path = Framework/Pantomime/CWISO8859_10.h; sourceTree = "<group>"; };
+		535F4AAB1292725200953978 /* CWISO8859_10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_10.m; path = Framework/Pantomime/CWISO8859_10.m; sourceTree = "<group>"; };
+		535F4AAC1292725200953978 /* CWISO8859_11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_11.h; path = Framework/Pantomime/CWISO8859_11.h; sourceTree = "<group>"; };
+		535F4AAD1292725200953978 /* CWISO8859_11.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_11.m; path = Framework/Pantomime/CWISO8859_11.m; sourceTree = "<group>"; };
+		535F4AAE1292725200953978 /* CWISO8859_13.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_13.h; path = Framework/Pantomime/CWISO8859_13.h; sourceTree = "<group>"; };
+		535F4AAF1292725200953978 /* CWISO8859_13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_13.m; path = Framework/Pantomime/CWISO8859_13.m; sourceTree = "<group>"; };
+		535F4AB01292725200953978 /* CWISO8859_14.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_14.h; path = Framework/Pantomime/CWISO8859_14.h; sourceTree = "<group>"; };
+		535F4AB11292725200953978 /* CWISO8859_14.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_14.m; path = Framework/Pantomime/CWISO8859_14.m; sourceTree = "<group>"; };
+		535F4AB21292725200953978 /* CWISO8859_15.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWISO8859_15.h; path = Framework/Pantomime/CWISO8859_15.h; sourceTree = "<group>"; };
+		535F4AB31292725200953978 /* CWISO8859_15.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWISO8859_15.m; path = Framework/Pantomime/CWISO8859_15.m; sourceTree = "<group>"; };
+		535F4AB41292725200953978 /* CWKOI8_R.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWKOI8_R.h; path = Framework/Pantomime/CWKOI8_R.h; sourceTree = "<group>"; };
+		535F4AB51292725200953978 /* CWKOI8_R.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWKOI8_R.m; path = Framework/Pantomime/CWKOI8_R.m; sourceTree = "<group>"; };
+		535F4AB61292725200953978 /* CWKOI8_U.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWKOI8_U.h; path = Framework/Pantomime/CWKOI8_U.h; sourceTree = "<group>"; };
+		535F4AB71292725200953978 /* CWKOI8_U.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWKOI8_U.m; path = Framework/Pantomime/CWKOI8_U.m; sourceTree = "<group>"; };
+		535F4AB81292725200953978 /* CWLocalCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWLocalCacheManager.h; path = Framework/Pantomime/CWLocalCacheManager.h; sourceTree = "<group>"; };
+		535F4AB91292725200953978 /* CWLocalCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWLocalCacheManager.m; path = Framework/Pantomime/CWLocalCacheManager.m; sourceTree = "<group>"; };
+		535F4ABA1292725200953978 /* CWLocalFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWLocalFolder.h; path = Framework/Pantomime/CWLocalFolder.h; sourceTree = "<group>"; };
+		535F4ABB1292725200953978 /* CWLocalFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWLocalFolder.m; path = Framework/Pantomime/CWLocalFolder.m; sourceTree = "<group>"; };
+		535F4ABC1292725200953978 /* CWLocalFolder+maildir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CWLocalFolder+maildir.h"; path = "Framework/Pantomime/CWLocalFolder+maildir.h"; sourceTree = "<group>"; };
+		535F4ABD1292725200953978 /* CWLocalFolder+maildir.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CWLocalFolder+maildir.m"; path = "Framework/Pantomime/CWLocalFolder+maildir.m"; sourceTree = "<group>"; };
+		535F4ABE1292725200953978 /* CWLocalFolder+mbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CWLocalFolder+mbox.h"; path = "Framework/Pantomime/CWLocalFolder+mbox.h"; sourceTree = "<group>"; };
+		535F4ABF1292725200953978 /* CWLocalFolder+mbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CWLocalFolder+mbox.m"; path = "Framework/Pantomime/CWLocalFolder+mbox.m"; sourceTree = "<group>"; };
+		535F4AC01292725200953978 /* CWLocalMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWLocalMessage.h; path = Framework/Pantomime/CWLocalMessage.h; sourceTree = "<group>"; };
+		535F4AC11292725200953978 /* CWLocalMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWLocalMessage.m; path = Framework/Pantomime/CWLocalMessage.m; sourceTree = "<group>"; };
+		535F4AC21292725200953978 /* CWLocalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWLocalStore.h; path = Framework/Pantomime/CWLocalStore.h; sourceTree = "<group>"; };
+		535F4AC31292725200953978 /* CWLocalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWLocalStore.m; path = Framework/Pantomime/CWLocalStore.m; sourceTree = "<group>"; };
+		535F4AC41292725200953978 /* CWMacOSXGlue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWMacOSXGlue.h; path = Framework/Pantomime/CWMacOSXGlue.h; sourceTree = "<group>"; };
+		535F4AC51292725200953978 /* CWMacOSXGlue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWMacOSXGlue.m; path = Framework/Pantomime/CWMacOSXGlue.m; sourceTree = "<group>"; };
+		535F4AC61292725200953978 /* CWMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWMD5.h; path = Framework/Pantomime/CWMD5.h; sourceTree = "<group>"; };
+		535F4AC71292725200953978 /* CWMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWMD5.m; path = Framework/Pantomime/CWMD5.m; sourceTree = "<group>"; };
+		535F4AC81292725200953978 /* CWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWMessage.h; path = Framework/Pantomime/CWMessage.h; sourceTree = "<group>"; };
+		535F4AC91292725200953978 /* CWMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWMessage.m; path = Framework/Pantomime/CWMessage.m; sourceTree = "<group>"; };
+		535F4ACA1292725200953978 /* CWMIMEMultipart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWMIMEMultipart.h; path = Framework/Pantomime/CWMIMEMultipart.h; sourceTree = "<group>"; };
+		535F4ACB1292725200953978 /* CWMIMEMultipart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWMIMEMultipart.m; path = Framework/Pantomime/CWMIMEMultipart.m; sourceTree = "<group>"; };
+		535F4ACC1292725200953978 /* CWMIMEUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWMIMEUtility.h; path = Framework/Pantomime/CWMIMEUtility.h; sourceTree = "<group>"; };
+		535F4ACD1292725200953978 /* CWMIMEUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWMIMEUtility.m; path = Framework/Pantomime/CWMIMEUtility.m; sourceTree = "<group>"; };
+		535F4ACE1292725200953978 /* CWParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWParser.h; path = Framework/Pantomime/CWParser.h; sourceTree = "<group>"; };
+		535F4ACF1292725200953978 /* CWParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWParser.m; path = Framework/Pantomime/CWParser.m; sourceTree = "<group>"; };
+		535F4AD01292725200953978 /* CWPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWPart.h; path = Framework/Pantomime/CWPart.h; sourceTree = "<group>"; };
+		535F4AD11292725200953978 /* CWPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWPart.m; path = Framework/Pantomime/CWPart.m; sourceTree = "<group>"; };
+		535F4AD21292725200953978 /* CWPOP3CacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWPOP3CacheManager.h; path = Framework/Pantomime/CWPOP3CacheManager.h; sourceTree = "<group>"; };
+		535F4AD31292725200953978 /* CWPOP3CacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWPOP3CacheManager.m; path = Framework/Pantomime/CWPOP3CacheManager.m; sourceTree = "<group>"; };
+		535F4AD41292725200953978 /* CWPOP3CacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWPOP3CacheObject.h; path = Framework/Pantomime/CWPOP3CacheObject.h; sourceTree = "<group>"; };
+		535F4AD51292725200953978 /* CWPOP3CacheObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWPOP3CacheObject.m; path = Framework/Pantomime/CWPOP3CacheObject.m; sourceTree = "<group>"; };
+		535F4AD61292725200953978 /* CWPOP3Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWPOP3Folder.h; path = Framework/Pantomime/CWPOP3Folder.h; sourceTree = "<group>"; };
+		535F4AD71292725200953978 /* CWPOP3Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWPOP3Folder.m; path = Framework/Pantomime/CWPOP3Folder.m; sourceTree = "<group>"; };
+		535F4AD81292725200953978 /* CWPOP3Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWPOP3Message.h; path = Framework/Pantomime/CWPOP3Message.h; sourceTree = "<group>"; };
+		535F4AD91292725200953978 /* CWPOP3Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWPOP3Message.m; path = Framework/Pantomime/CWPOP3Message.m; sourceTree = "<group>"; };
+		535F4ADA1292725200953978 /* CWPOP3Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWPOP3Store.h; path = Framework/Pantomime/CWPOP3Store.h; sourceTree = "<group>"; };
+		535F4ADB1292725200953978 /* CWPOP3Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWPOP3Store.m; path = Framework/Pantomime/CWPOP3Store.m; sourceTree = "<group>"; };
+		535F4ADC1292725200953978 /* CWRegEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWRegEx.h; path = Framework/Pantomime/CWRegEx.h; sourceTree = "<group>"; };
+		535F4ADD1292725200953978 /* CWRegEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWRegEx.m; path = Framework/Pantomime/CWRegEx.m; sourceTree = "<group>"; };
+		535F4ADE1292725200953978 /* CWSendmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWSendmail.h; path = Framework/Pantomime/CWSendmail.h; sourceTree = "<group>"; };
+		535F4ADF1292725200953978 /* CWSendmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWSendmail.m; path = Framework/Pantomime/CWSendmail.m; sourceTree = "<group>"; };
+		535F4AE01292725200953978 /* CWService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWService.h; path = Framework/Pantomime/CWService.h; sourceTree = "<group>"; };
+		535F4AE11292725200953978 /* CWService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWService.m; path = Framework/Pantomime/CWService.m; sourceTree = "<group>"; };
+		535F4AE21292725200953978 /* CWSMTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWSMTP.h; path = Framework/Pantomime/CWSMTP.h; sourceTree = "<group>"; };
+		535F4AE31292725200953978 /* CWSMTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWSMTP.m; path = Framework/Pantomime/CWSMTP.m; sourceTree = "<group>"; };
+		535F4AE41292725200953978 /* CWStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWStore.h; path = Framework/Pantomime/CWStore.h; sourceTree = "<group>"; };
+		535F4AE51292725200953978 /* CWTCPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWTCPConnection.h; path = Framework/Pantomime/CWTCPConnection.h; sourceTree = "<group>"; };
+		535F4AE61292725200953978 /* CWTCPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWTCPConnection.m; path = Framework/Pantomime/CWTCPConnection.m; sourceTree = "<group>"; };
+		535F4AE71292725200953978 /* CWTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWTransport.h; path = Framework/Pantomime/CWTransport.h; sourceTree = "<group>"; };
+		535F4AE81292725200953978 /* CWURLName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWURLName.h; path = Framework/Pantomime/CWURLName.h; sourceTree = "<group>"; };
+		535F4AE91292725200953978 /* CWURLName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWURLName.m; path = Framework/Pantomime/CWURLName.m; sourceTree = "<group>"; };
+		535F4AEA1292725200953978 /* CWUUFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWUUFile.h; path = Framework/Pantomime/CWUUFile.h; sourceTree = "<group>"; };
+		535F4AEB1292725200953978 /* CWUUFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWUUFile.m; path = Framework/Pantomime/CWUUFile.m; sourceTree = "<group>"; };
+		535F4AEC1292725200953978 /* CWVirtualFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWVirtualFolder.h; path = Framework/Pantomime/CWVirtualFolder.h; sourceTree = "<group>"; };
+		535F4AED1292725200953978 /* CWVirtualFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWVirtualFolder.m; path = Framework/Pantomime/CWVirtualFolder.m; sourceTree = "<group>"; };
+		535F4AEE1292725200953978 /* CWWINDOWS_1250.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWWINDOWS_1250.h; path = Framework/Pantomime/CWWINDOWS_1250.h; sourceTree = "<group>"; };
+		535F4AEF1292725200953978 /* CWWINDOWS_1250.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWWINDOWS_1250.m; path = Framework/Pantomime/CWWINDOWS_1250.m; sourceTree = "<group>"; };
+		535F4AF01292725200953978 /* CWWINDOWS_1251.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWWINDOWS_1251.h; path = Framework/Pantomime/CWWINDOWS_1251.h; sourceTree = "<group>"; };
+		535F4AF11292725200953978 /* CWWINDOWS_1251.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWWINDOWS_1251.m; path = Framework/Pantomime/CWWINDOWS_1251.m; sourceTree = "<group>"; };
+		535F4AF21292725200953978 /* CWWINDOWS_1252.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWWINDOWS_1252.h; path = Framework/Pantomime/CWWINDOWS_1252.h; sourceTree = "<group>"; };
+		535F4AF31292725200953978 /* CWWINDOWS_1252.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWWINDOWS_1252.m; path = Framework/Pantomime/CWWINDOWS_1252.m; sourceTree = "<group>"; };
+		535F4AF41292725200953978 /* CWWINDOWS_1253.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWWINDOWS_1253.h; path = Framework/Pantomime/CWWINDOWS_1253.h; sourceTree = "<group>"; };
+		535F4AF51292725200953978 /* CWWINDOWS_1253.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWWINDOWS_1253.m; path = Framework/Pantomime/CWWINDOWS_1253.m; sourceTree = "<group>"; };
+		535F4AF61292725200953978 /* CWWINDOWS_1254.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CWWINDOWS_1254.h; path = Framework/Pantomime/CWWINDOWS_1254.h; sourceTree = "<group>"; };
+		535F4AF71292725200953978 /* CWWINDOWS_1254.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CWWINDOWS_1254.m; path = Framework/Pantomime/CWWINDOWS_1254.m; sourceTree = "<group>"; };
+		535F4AF81292725200953978 /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GNUmakefile; path = Framework/Pantomime/GNUmakefile; sourceTree = "<group>"; };
+		535F4AF91292725200953978 /* io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = io.c; path = Framework/Pantomime/io.c; sourceTree = "<group>"; };
+		535F4AFA1292725200953978 /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = io.h; path = Framework/Pantomime/io.h; sourceTree = "<group>"; };
+		535F4AFB1292725200953978 /* NSData+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Extensions.h"; path = "Framework/Pantomime/NSData+Extensions.h"; sourceTree = "<group>"; };
+		535F4AFC1292725200953978 /* NSData+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Extensions.m"; path = "Framework/Pantomime/NSData+Extensions.m"; sourceTree = "<group>"; };
+		535F4AFD1292725200953978 /* NSFileManager+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Extensions.h"; path = "Framework/Pantomime/NSFileManager+Extensions.h"; sourceTree = "<group>"; };
+		535F4AFE1292725200953978 /* NSFileManager+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Extensions.m"; path = "Framework/Pantomime/NSFileManager+Extensions.m"; sourceTree = "<group>"; };
+		535F4AFF1292725200953978 /* NSScanner+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSScanner+Extensions.h"; path = "Framework/Pantomime/NSScanner+Extensions.h"; sourceTree = "<group>"; };
+		535F4B001292725200953978 /* NSScanner+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSScanner+Extensions.m"; path = "Framework/Pantomime/NSScanner+Extensions.m"; sourceTree = "<group>"; };
+		535F4B011292725200953978 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Extensions.h"; path = "Framework/Pantomime/NSString+Extensions.h"; sourceTree = "<group>"; };
+		535F4B021292725200953978 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Extensions.m"; path = "Framework/Pantomime/NSString+Extensions.m"; sourceTree = "<group>"; };
+		535F4B031292725200953978 /* Pantomime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pantomime.h; path = Framework/Pantomime/Pantomime.h; sourceTree = "<group>"; };
+		535F4B941292743600953978 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = openssl.xcodeproj; sourceTree = OPENSSL_SRC; };
+		AA747D9E0F9514B9006C5449 /* Pantomime_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pantomime_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libPantomime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPantomime.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+				535F4A4D12926A5700953978 /* CoreFoundation.framework in Frameworks */,
+				535F4A7A129271D500953978 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libPantomime.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* Pantomime */ = {
+			isa = PBXGroup;
+			children = (
+				535F4B941292743600953978 /* openssl.xcodeproj */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = Pantomime;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				535F4A4C12926A5700953978 /* CoreFoundation.framework */,
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				535F4A79129271D500953978 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				535F4A7D1292725200953978 /* CWCacheManager.h */,
+				535F4A7E1292725200953978 /* CWCacheManager.m */,
+				535F4A7F1292725200953978 /* CWCharset.h */,
+				535F4A801292725200953978 /* CWCharset.m */,
+				535F4A811292725200953978 /* CWConnection.h */,
+				535F4A821292725200953978 /* CWConstants.h */,
+				535F4A831292725200953978 /* CWConstants.m */,
+				535F4A841292725200953978 /* CWContainer.h */,
+				535F4A851292725200953978 /* CWContainer.m */,
+				535F4A861292725200953978 /* CWDNSManager.h */,
+				535F4A871292725200953978 /* CWDNSManager.m */,
+				535F4A881292725200953978 /* CWFlags.h */,
+				535F4A891292725200953978 /* CWFlags.m */,
+				535F4A8A1292725200953978 /* CWFolder.h */,
+				535F4A8B1292725200953978 /* CWFolder.m */,
+				535F4A8C1292725200953978 /* CWFolderInformation.h */,
+				535F4A8D1292725200953978 /* CWFolderInformation.m */,
+				535F4A8E1292725200953978 /* CWIMAPCacheManager.h */,
+				535F4A8F1292725200953978 /* CWIMAPCacheManager.m */,
+				535F4A901292725200953978 /* CWIMAPFolder.h */,
+				535F4A911292725200953978 /* CWIMAPFolder.m */,
+				535F4A921292725200953978 /* CWIMAPMessage.h */,
+				535F4A931292725200953978 /* CWIMAPMessage.m */,
+				535F4A941292725200953978 /* CWIMAPStore.h */,
+				535F4A951292725200953978 /* CWIMAPStore.m */,
+				535F4A961292725200953978 /* CWInternetAddress.h */,
+				535F4A971292725200953978 /* CWInternetAddress.m */,
+				535F4A981292725200953978 /* CWISO8859_1.h */,
+				535F4A991292725200953978 /* CWISO8859_1.m */,
+				535F4A9A1292725200953978 /* CWISO8859_2.h */,
+				535F4A9B1292725200953978 /* CWISO8859_2.m */,
+				535F4A9C1292725200953978 /* CWISO8859_3.h */,
+				535F4A9D1292725200953978 /* CWISO8859_3.m */,
+				535F4A9E1292725200953978 /* CWISO8859_4.h */,
+				535F4A9F1292725200953978 /* CWISO8859_4.m */,
+				535F4AA01292725200953978 /* CWISO8859_5.h */,
+				535F4AA11292725200953978 /* CWISO8859_5.m */,
+				535F4AA21292725200953978 /* CWISO8859_6.h */,
+				535F4AA31292725200953978 /* CWISO8859_6.m */,
+				535F4AA41292725200953978 /* CWISO8859_7.h */,
+				535F4AA51292725200953978 /* CWISO8859_7.m */,
+				535F4AA61292725200953978 /* CWISO8859_8.h */,
+				535F4AA71292725200953978 /* CWISO8859_8.m */,
+				535F4AA81292725200953978 /* CWISO8859_9.h */,
+				535F4AA91292725200953978 /* CWISO8859_9.m */,
+				535F4AAA1292725200953978 /* CWISO8859_10.h */,
+				535F4AAB1292725200953978 /* CWISO8859_10.m */,
+				535F4AAC1292725200953978 /* CWISO8859_11.h */,
+				535F4AAD1292725200953978 /* CWISO8859_11.m */,
+				535F4AAE1292725200953978 /* CWISO8859_13.h */,
+				535F4AAF1292725200953978 /* CWISO8859_13.m */,
+				535F4AB01292725200953978 /* CWISO8859_14.h */,
+				535F4AB11292725200953978 /* CWISO8859_14.m */,
+				535F4AB21292725200953978 /* CWISO8859_15.h */,
+				535F4AB31292725200953978 /* CWISO8859_15.m */,
+				535F4AB41292725200953978 /* CWKOI8_R.h */,
+				535F4AB51292725200953978 /* CWKOI8_R.m */,
+				535F4AB61292725200953978 /* CWKOI8_U.h */,
+				535F4AB71292725200953978 /* CWKOI8_U.m */,
+				535F4AB81292725200953978 /* CWLocalCacheManager.h */,
+				535F4AB91292725200953978 /* CWLocalCacheManager.m */,
+				535F4ABA1292725200953978 /* CWLocalFolder.h */,
+				535F4ABB1292725200953978 /* CWLocalFolder.m */,
+				535F4ABC1292725200953978 /* CWLocalFolder+maildir.h */,
+				535F4ABD1292725200953978 /* CWLocalFolder+maildir.m */,
+				535F4ABE1292725200953978 /* CWLocalFolder+mbox.h */,
+				535F4ABF1292725200953978 /* CWLocalFolder+mbox.m */,
+				535F4AC01292725200953978 /* CWLocalMessage.h */,
+				535F4AC11292725200953978 /* CWLocalMessage.m */,
+				535F4AC21292725200953978 /* CWLocalStore.h */,
+				535F4AC31292725200953978 /* CWLocalStore.m */,
+				535F4AC41292725200953978 /* CWMacOSXGlue.h */,
+				535F4AC51292725200953978 /* CWMacOSXGlue.m */,
+				535F4AC61292725200953978 /* CWMD5.h */,
+				535F4AC71292725200953978 /* CWMD5.m */,
+				535F4AC81292725200953978 /* CWMessage.h */,
+				535F4AC91292725200953978 /* CWMessage.m */,
+				535F4ACA1292725200953978 /* CWMIMEMultipart.h */,
+				535F4ACB1292725200953978 /* CWMIMEMultipart.m */,
+				535F4ACC1292725200953978 /* CWMIMEUtility.h */,
+				535F4ACD1292725200953978 /* CWMIMEUtility.m */,
+				535F4ACE1292725200953978 /* CWParser.h */,
+				535F4ACF1292725200953978 /* CWParser.m */,
+				535F4AD01292725200953978 /* CWPart.h */,
+				535F4AD11292725200953978 /* CWPart.m */,
+				535F4AD21292725200953978 /* CWPOP3CacheManager.h */,
+				535F4AD31292725200953978 /* CWPOP3CacheManager.m */,
+				535F4AD41292725200953978 /* CWPOP3CacheObject.h */,
+				535F4AD51292725200953978 /* CWPOP3CacheObject.m */,
+				535F4AD61292725200953978 /* CWPOP3Folder.h */,
+				535F4AD71292725200953978 /* CWPOP3Folder.m */,
+				535F4AD81292725200953978 /* CWPOP3Message.h */,
+				535F4AD91292725200953978 /* CWPOP3Message.m */,
+				535F4ADA1292725200953978 /* CWPOP3Store.h */,
+				535F4ADB1292725200953978 /* CWPOP3Store.m */,
+				535F4ADC1292725200953978 /* CWRegEx.h */,
+				535F4ADD1292725200953978 /* CWRegEx.m */,
+				535F4ADE1292725200953978 /* CWSendmail.h */,
+				535F4ADF1292725200953978 /* CWSendmail.m */,
+				535F4AE01292725200953978 /* CWService.h */,
+				535F4AE11292725200953978 /* CWService.m */,
+				535F4AE21292725200953978 /* CWSMTP.h */,
+				535F4AE31292725200953978 /* CWSMTP.m */,
+				535F4AE41292725200953978 /* CWStore.h */,
+				535F4AE51292725200953978 /* CWTCPConnection.h */,
+				535F4AE61292725200953978 /* CWTCPConnection.m */,
+				535F4AE71292725200953978 /* CWTransport.h */,
+				535F4AE81292725200953978 /* CWURLName.h */,
+				535F4AE91292725200953978 /* CWURLName.m */,
+				535F4AEA1292725200953978 /* CWUUFile.h */,
+				535F4AEB1292725200953978 /* CWUUFile.m */,
+				535F4AEC1292725200953978 /* CWVirtualFolder.h */,
+				535F4AED1292725200953978 /* CWVirtualFolder.m */,
+				535F4AEE1292725200953978 /* CWWINDOWS_1250.h */,
+				535F4AEF1292725200953978 /* CWWINDOWS_1250.m */,
+				535F4AF01292725200953978 /* CWWINDOWS_1251.h */,
+				535F4AF11292725200953978 /* CWWINDOWS_1251.m */,
+				535F4AF21292725200953978 /* CWWINDOWS_1252.h */,
+				535F4AF31292725200953978 /* CWWINDOWS_1252.m */,
+				535F4AF41292725200953978 /* CWWINDOWS_1253.h */,
+				535F4AF51292725200953978 /* CWWINDOWS_1253.m */,
+				535F4AF61292725200953978 /* CWWINDOWS_1254.h */,
+				535F4AF71292725200953978 /* CWWINDOWS_1254.m */,
+				535F4AF81292725200953978 /* GNUmakefile */,
+				535F4AF91292725200953978 /* io.c */,
+				535F4AFA1292725200953978 /* io.h */,
+				535F4AFB1292725200953978 /* NSData+Extensions.h */,
+				535F4AFC1292725200953978 /* NSData+Extensions.m */,
+				535F4AFD1292725200953978 /* NSFileManager+Extensions.h */,
+				535F4AFE1292725200953978 /* NSFileManager+Extensions.m */,
+				535F4AFF1292725200953978 /* NSScanner+Extensions.h */,
+				535F4B001292725200953978 /* NSScanner+Extensions.m */,
+				535F4B011292725200953978 /* NSString+Extensions.h */,
+				535F4B021292725200953978 /* NSString+Extensions.m */,
+				535F4B031292725200953978 /* Pantomime.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* Pantomime_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		535F4BAB1292747600953978 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				535F4BB01292747600953978 /* libcrypto.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* Pantomime_Prefix.pch in Headers */,
+				535F4B041292725200953978 /* CWCacheManager.h in Headers */,
+				535F4B061292725200953978 /* CWCharset.h in Headers */,
+				535F4B081292725200953978 /* CWConnection.h in Headers */,
+				535F4B091292725200953978 /* CWConstants.h in Headers */,
+				535F4B0B1292725200953978 /* CWContainer.h in Headers */,
+				535F4B0D1292725200953978 /* CWDNSManager.h in Headers */,
+				535F4B0F1292725200953978 /* CWFlags.h in Headers */,
+				535F4B111292725200953978 /* CWFolder.h in Headers */,
+				535F4B131292725200953978 /* CWFolderInformation.h in Headers */,
+				535F4B151292725200953978 /* CWIMAPCacheManager.h in Headers */,
+				535F4B171292725200953978 /* CWIMAPFolder.h in Headers */,
+				535F4B191292725200953978 /* CWIMAPMessage.h in Headers */,
+				535F4B1B1292725200953978 /* CWIMAPStore.h in Headers */,
+				535F4B1D1292725200953978 /* CWInternetAddress.h in Headers */,
+				535F4B1F1292725200953978 /* CWISO8859_1.h in Headers */,
+				535F4B211292725200953978 /* CWISO8859_2.h in Headers */,
+				535F4B231292725200953978 /* CWISO8859_3.h in Headers */,
+				535F4B251292725200953978 /* CWISO8859_4.h in Headers */,
+				535F4B271292725200953978 /* CWISO8859_5.h in Headers */,
+				535F4B291292725200953978 /* CWISO8859_6.h in Headers */,
+				535F4B2B1292725200953978 /* CWISO8859_7.h in Headers */,
+				535F4B2D1292725200953978 /* CWISO8859_8.h in Headers */,
+				535F4B2F1292725200953978 /* CWISO8859_9.h in Headers */,
+				535F4B311292725200953978 /* CWISO8859_10.h in Headers */,
+				535F4B331292725200953978 /* CWISO8859_11.h in Headers */,
+				535F4B351292725200953978 /* CWISO8859_13.h in Headers */,
+				535F4B371292725200953978 /* CWISO8859_14.h in Headers */,
+				535F4B391292725200953978 /* CWISO8859_15.h in Headers */,
+				535F4B3B1292725200953978 /* CWKOI8_R.h in Headers */,
+				535F4B3D1292725200953978 /* CWKOI8_U.h in Headers */,
+				535F4B3F1292725200953978 /* CWLocalCacheManager.h in Headers */,
+				535F4B411292725200953978 /* CWLocalFolder.h in Headers */,
+				535F4B431292725200953978 /* CWLocalFolder+maildir.h in Headers */,
+				535F4B451292725200953978 /* CWLocalFolder+mbox.h in Headers */,
+				535F4B471292725200953978 /* CWLocalMessage.h in Headers */,
+				535F4B491292725200953978 /* CWLocalStore.h in Headers */,
+				535F4B4B1292725200953978 /* CWMacOSXGlue.h in Headers */,
+				535F4B4D1292725200953978 /* CWMD5.h in Headers */,
+				535F4B4F1292725200953978 /* CWMessage.h in Headers */,
+				535F4B511292725200953978 /* CWMIMEMultipart.h in Headers */,
+				535F4B531292725200953978 /* CWMIMEUtility.h in Headers */,
+				535F4B551292725200953978 /* CWParser.h in Headers */,
+				535F4B571292725200953978 /* CWPart.h in Headers */,
+				535F4B591292725200953978 /* CWPOP3CacheManager.h in Headers */,
+				535F4B5B1292725200953978 /* CWPOP3CacheObject.h in Headers */,
+				535F4B5D1292725200953978 /* CWPOP3Folder.h in Headers */,
+				535F4B5F1292725200953978 /* CWPOP3Message.h in Headers */,
+				535F4B611292725200953978 /* CWPOP3Store.h in Headers */,
+				535F4B631292725200953978 /* CWRegEx.h in Headers */,
+				535F4B651292725200953978 /* CWSendmail.h in Headers */,
+				535F4B671292725200953978 /* CWService.h in Headers */,
+				535F4B691292725200953978 /* CWSMTP.h in Headers */,
+				535F4B6B1292725200953978 /* CWStore.h in Headers */,
+				535F4B6C1292725200953978 /* CWTCPConnection.h in Headers */,
+				535F4B6E1292725200953978 /* CWTransport.h in Headers */,
+				535F4B6F1292725200953978 /* CWURLName.h in Headers */,
+				535F4B711292725200953978 /* CWUUFile.h in Headers */,
+				535F4B731292725200953978 /* CWVirtualFolder.h in Headers */,
+				535F4B751292725200953978 /* CWWINDOWS_1250.h in Headers */,
+				535F4B771292725200953978 /* CWWINDOWS_1251.h in Headers */,
+				535F4B791292725200953978 /* CWWINDOWS_1252.h in Headers */,
+				535F4B7B1292725200953978 /* CWWINDOWS_1253.h in Headers */,
+				535F4B7D1292725200953978 /* CWWINDOWS_1254.h in Headers */,
+				535F4B801292725200953978 /* io.h in Headers */,
+				535F4B811292725200953978 /* NSData+Extensions.h in Headers */,
+				535F4B831292725200953978 /* NSFileManager+Extensions.h in Headers */,
+				535F4B851292725200953978 /* NSScanner+Extensions.h in Headers */,
+				535F4B871292725200953978 /* NSString+Extensions.h in Headers */,
+				535F4B891292725200953978 /* Pantomime.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* Pantomime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "Pantomime" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				535F4BB4129274B400953978 /* PBXTargetDependency */,
+			);
+			name = Pantomime;
+			productName = Pantomime;
+			productReference = D2AAC07E0554694100DB518D /* libPantomime.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Pantomime" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* Pantomime */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 535F4BAB1292747600953978 /* Products */;
+					ProjectRef = 535F4B941292743600953978 /* openssl.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* Pantomime */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		535F4BB01292747600953978 /* libcrypto.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcrypto.a;
+			remoteRef = 535F4BAF1292747600953978 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				535F4B051292725200953978 /* CWCacheManager.m in Sources */,
+				535F4B071292725200953978 /* CWCharset.m in Sources */,
+				535F4B0A1292725200953978 /* CWConstants.m in Sources */,
+				535F4B0C1292725200953978 /* CWContainer.m in Sources */,
+				535F4B0E1292725200953978 /* CWDNSManager.m in Sources */,
+				535F4B101292725200953978 /* CWFlags.m in Sources */,
+				535F4B121292725200953978 /* CWFolder.m in Sources */,
+				535F4B141292725200953978 /* CWFolderInformation.m in Sources */,
+				535F4B161292725200953978 /* CWIMAPCacheManager.m in Sources */,
+				535F4B181292725200953978 /* CWIMAPFolder.m in Sources */,
+				535F4B1A1292725200953978 /* CWIMAPMessage.m in Sources */,
+				535F4B1C1292725200953978 /* CWIMAPStore.m in Sources */,
+				535F4B1E1292725200953978 /* CWInternetAddress.m in Sources */,
+				535F4B201292725200953978 /* CWISO8859_1.m in Sources */,
+				535F4B221292725200953978 /* CWISO8859_2.m in Sources */,
+				535F4B241292725200953978 /* CWISO8859_3.m in Sources */,
+				535F4B261292725200953978 /* CWISO8859_4.m in Sources */,
+				535F4B281292725200953978 /* CWISO8859_5.m in Sources */,
+				535F4B2A1292725200953978 /* CWISO8859_6.m in Sources */,
+				535F4B2C1292725200953978 /* CWISO8859_7.m in Sources */,
+				535F4B2E1292725200953978 /* CWISO8859_8.m in Sources */,
+				535F4B301292725200953978 /* CWISO8859_9.m in Sources */,
+				535F4B321292725200953978 /* CWISO8859_10.m in Sources */,
+				535F4B341292725200953978 /* CWISO8859_11.m in Sources */,
+				535F4B361292725200953978 /* CWISO8859_13.m in Sources */,
+				535F4B381292725200953978 /* CWISO8859_14.m in Sources */,
+				535F4B3A1292725200953978 /* CWISO8859_15.m in Sources */,
+				535F4B3C1292725200953978 /* CWKOI8_R.m in Sources */,
+				535F4B3E1292725200953978 /* CWKOI8_U.m in Sources */,
+				535F4B401292725200953978 /* CWLocalCacheManager.m in Sources */,
+				535F4B421292725200953978 /* CWLocalFolder.m in Sources */,
+				535F4B441292725200953978 /* CWLocalFolder+maildir.m in Sources */,
+				535F4B461292725200953978 /* CWLocalFolder+mbox.m in Sources */,
+				535F4B481292725200953978 /* CWLocalMessage.m in Sources */,
+				535F4B4A1292725200953978 /* CWLocalStore.m in Sources */,
+				535F4B4C1292725200953978 /* CWMacOSXGlue.m in Sources */,
+				535F4B4E1292725200953978 /* CWMD5.m in Sources */,
+				535F4B501292725200953978 /* CWMessage.m in Sources */,
+				535F4B521292725200953978 /* CWMIMEMultipart.m in Sources */,
+				535F4B541292725200953978 /* CWMIMEUtility.m in Sources */,
+				535F4B561292725200953978 /* CWParser.m in Sources */,
+				535F4B581292725200953978 /* CWPart.m in Sources */,
+				535F4B5A1292725200953978 /* CWPOP3CacheManager.m in Sources */,
+				535F4B5C1292725200953978 /* CWPOP3CacheObject.m in Sources */,
+				535F4B5E1292725200953978 /* CWPOP3Folder.m in Sources */,
+				535F4B601292725200953978 /* CWPOP3Message.m in Sources */,
+				535F4B621292725200953978 /* CWPOP3Store.m in Sources */,
+				535F4B641292725200953978 /* CWRegEx.m in Sources */,
+				535F4B661292725200953978 /* CWSendmail.m in Sources */,
+				535F4B681292725200953978 /* CWService.m in Sources */,
+				535F4B6A1292725200953978 /* CWSMTP.m in Sources */,
+				535F4B6D1292725200953978 /* CWTCPConnection.m in Sources */,
+				535F4B701292725200953978 /* CWURLName.m in Sources */,
+				535F4B721292725200953978 /* CWUUFile.m in Sources */,
+				535F4B741292725200953978 /* CWVirtualFolder.m in Sources */,
+				535F4B761292725200953978 /* CWWINDOWS_1250.m in Sources */,
+				535F4B781292725200953978 /* CWWINDOWS_1251.m in Sources */,
+				535F4B7A1292725200953978 /* CWWINDOWS_1252.m in Sources */,
+				535F4B7C1292725200953978 /* CWWINDOWS_1253.m in Sources */,
+				535F4B7E1292725200953978 /* CWWINDOWS_1254.m in Sources */,
+				535F4B7F1292725200953978 /* io.c in Sources */,
+				535F4B821292725200953978 /* NSData+Extensions.m in Sources */,
+				535F4B841292725200953978 /* NSFileManager+Extensions.m in Sources */,
+				535F4B861292725200953978 /* NSScanner+Extensions.m in Sources */,
+				535F4B881292725200953978 /* NSString+Extensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		535F4BB4129274B400953978 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = crypto;
+			targetProxy = 535F4BB3129274B400953978 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/Pantomime.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Pantomime_Prefix.pch;
+				HEADER_SEARCH_PATHS = "$(OPENSSL_SRC)/**";
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Pantomime;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/Pantomime.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Pantomime_Prefix.pch;
+				HEADER_SEARCH_PATHS = "$(OPENSSL_SRC)/**";
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Pantomime;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.1;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "Pantomime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Pantomime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
