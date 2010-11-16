@@ -23,7 +23,7 @@
 #ifndef _Pantomime_H_CWPOP3CacheObject
 #define _Pantomime_H_CWPOP3CacheObject
 
-#import <Foundation/NSCalendarDate.h>
+#import <Foundation/NSDate.h>
 #import <Foundation/NSCoder.h>
 #import <Foundation/NSObject.h>
 #import <Foundation/NSString.h>
@@ -37,7 +37,7 @@
 @interface CWPOP3CacheObject : NSObject <NSCoding>
 {
   @private
-    NSCalendarDate *_date;
+    NSDate *_date;
     NSString *_UID;
 }
 
@@ -51,7 +51,7 @@
   @result The instance, nil on error.
 */
 - (id) initWithUID: (NSString *) theUID
-              date: (NSCalendarDate *) theDate;
+              date: (NSDate *) theDate;
 
 /*!
   @method date
@@ -60,7 +60,7 @@
 	      the POP3 server.
   @result The date value, nil if none was set.
 */
-- (NSCalendarDate *) date;
+- (NSDate *) date;
 
 /*!
   @method setDate:
@@ -69,7 +69,7 @@
 	      the POP3 server.
   @param theDate The new date value.
 */
-- (void) setDate: (NSCalendarDate *) theDate;
+- (void) setDate: (NSDate *) theDate;
 
 /*!
   @method setUID:
