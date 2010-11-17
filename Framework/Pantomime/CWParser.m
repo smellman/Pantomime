@@ -499,14 +499,20 @@ int next_word(unsigned char *buf, unsigned int start, unsigned int len, unsigned
 	    }
 	  tz = s*tz;
 	}
-      
-      [theMessage setReceivedDate: [NSCalendarDate dateWithYear: year
-						   month: month
-						   day: day
-						   hour: hours
-						   minute: mins
-						   second: secs
-						   timeZone: [NSTimeZone timeZoneForSecondsFromGMT: tz]]];
+      NSCalendar *calendar = [NSCalendar currentCalendar];
+      NSDateComponents *comps = [[NSDateComponents alloc] init];
+      [comps setYear:year];
+      [comps setMonth:month];
+      [comps setDay:day];
+      [comps setHour:hours];
+      [comps setMinute:mins];
+      [comps setSecond:secs];
+      [comps setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:tz]];
+      NSDate *aReceivedDate = [calendar dateFromComponents:comps];
+      [theMessage setReceivedDate:aReceivedDate];
+      [aReceivedDate release];
+      [comps release];
+      [calendar release];
       free(word);
     }
 }
