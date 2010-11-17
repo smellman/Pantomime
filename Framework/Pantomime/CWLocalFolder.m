@@ -37,7 +37,6 @@
 
 #include <Foundation/NSAutoreleasePool.h>
 #include <Foundation/NSException.h>
-#include <Foundation/NSHost.h>
 #include <Foundation/NSNotification.h>
 #include <Foundation/NSPathUtilities.h>
 
@@ -460,9 +459,9 @@
 	  aDate = [NSDate date];
 	}
       NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-      [dateFormatter setFormat:@"%a %b %d %H:%M:%S %Y"];
+      [dateFormatter setDateFormat:@"%a %b %d %H:%M:%S %Y"];
       aString = [NSString stringWithFormat: @"From %@ %@\n", aSender, 
-			  [dateFormatter stringFromDate:aDate];
+			  [dateFormatter stringFromDate:aDate]];
       [aMutableData insertCString: [aString cString] atIndex: 0];
     }
   
