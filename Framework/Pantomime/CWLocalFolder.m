@@ -361,7 +361,7 @@
 								  getpid(),
 								  rand(),
 								  [_cacheManager count],
-								  [[NSHost currentHost] name]],
+								  [[NSProcessInfo processInfo] hostName]],
 			    ((id)theFlags ? (id)[theFlags maildirString] : (id)@"2,")];
       
       aMailFilePath = [NSString stringWithFormat: @"%@/cur/%@", _path, aMailFile];
