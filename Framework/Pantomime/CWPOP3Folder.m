@@ -199,19 +199,18 @@
       
       if (aDate)
 	{
-	  NSCalendarDate *aCalendarDate;
+	  NSCalendar *calendar = [NSCalendar currentCalendar];
+      NSDate *aCurrentDate = [[NSData alloc] init];
 	  int days;
 	  
 	  // We get the days interval between our two dates
-	  aCalendarDate = [NSCalendarDate calendarDate];
-	  [aCalendarDate years: NULL
-			 months: NULL
-			 days: &days
-			 hours: NULL
-			 minutes: NULL
-			 seconds: NULL
-			 sinceDate: aDate];
-	  
+      NSDateComponents *comps;
+      NSUInteger flags = NSDayCalendarUnit;
+      comps = [calendar components:flags 
+                          fromDate:aDate
+                            toDate:aCurrentDate
+                           options:0];
+      days = (int) [comps day];
 	  if (days >= _retain_period)
 	    {
 	      [_store sendCommand: POP3_DELE  arguments: @"DELE %d", i];
