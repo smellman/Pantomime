@@ -31,10 +31,8 @@
 #import <Foundation/NSRunLoop.h>
 #import <Foundation/NSTimer.h>
 
-#ifdef MACOSX
 #import <Foundation/NSMapTable.h>
 #include <CoreFoundation/CoreFoundation.h>
-#endif
 
 /*!
   @function split_lines
@@ -247,7 +245,6 @@ extern NSString* PantomimeProtocolException;
 @end
 
 
-#ifdef MACOSX
 typedef enum {ET_RDESC, ET_WDESC, ET_EDESC} RunLoopEventType;
 
 /*!
@@ -259,9 +256,6 @@ typedef enum {ET_RDESC, ET_WDESC, ET_EDESC} RunLoopEventType;
 	      which fully implement the abstract methods found in this class.
 */
 @interface CWService : NSObject
-#else
-@interface CWService : NSObject <RunLoopEvents>
-#endif
 {
   @protected
     NSMutableArray *_supportedMechanisms;
@@ -276,11 +270,9 @@ typedef enum {ET_RDESC, ET_WDESC, ET_EDESC} RunLoopEventType;
     NSString *_password;
     NSString *_name;
 
-#ifdef MACOSX
     CFRunLoopSourceRef _runLoopSource;
     CFSocketContext *_context;
     CFSocketRef _socket;
-#endif
 
     unsigned int _connectionTimeout;
     unsigned int _readTimeout;

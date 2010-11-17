@@ -67,7 +67,6 @@
 //
 // OS X's implementation of the GNUstep RunLoop Extensions
 //
-#ifdef MACOSX
 static NSMapTable *fd_to_cfsocket;
 
 void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void* data, void* info)
@@ -167,7 +166,6 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
 }
 
 @end
-#endif // MACOSX
 
 
 //
@@ -175,12 +173,10 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
 //
 @implementation CWService
 
-#ifdef MACOSX
 + (void) initialize
 {
   fd_to_cfsocket = NSCreateMapTable(NSIntMapKeyCallBacks, NSIntMapValueCallBacks, 16);  
 }
-#endif
 
 
 //
