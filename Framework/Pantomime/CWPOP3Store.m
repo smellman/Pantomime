@@ -768,7 +768,7 @@ static NSData *CRLF;
 	{
 	  cache_record r;
 
-	  r.date = [[NSCalendarDate calendarDate] timeIntervalSince1970];
+      r.date = [[[NSDate alloc] init] timeIntervalSince1970];
 	  r.pop3_uid = [aMessage UID];
 	  [[_folder cacheManager] writeRecord: &r];
 	}
