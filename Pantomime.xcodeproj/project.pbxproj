@@ -152,14 +152,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 535F4B941292743600953978 /* openssl.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 9069D28C0FCE659A0042E34C /* libcrypto.a */;
+			remoteGlobalIDString = 9069D28C0FCE659A0042E34C;
 			remoteInfo = crypto;
 		};
 		535F4BB3129274B400953978 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 535F4B941292743600953978 /* openssl.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 9069D28B0FCE659A0042E34C /* crypto */;
+			remoteGlobalIDString = 9069D28B0FCE659A0042E34C;
 			remoteInfo = crypto;
 		};
 /* End PBXContainerItemProxy section */
