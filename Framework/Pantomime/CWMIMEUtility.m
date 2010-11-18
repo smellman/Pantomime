@@ -35,7 +35,6 @@
 #include <Foundation/NSBundle.h>
 #include <Foundation/NSCharacterSet.h>
 #include <Foundation/NSFileManager.h>
-#include <Foundation/NSHost.h>
 #include <Foundation/NSScanner.h>
 #include <Foundation/NSValue.h>
 

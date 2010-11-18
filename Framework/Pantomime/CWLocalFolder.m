@@ -356,12 +356,16 @@
   // Set the appropriate stream
   if (_type == PantomimeFormatMaildir)
     {
+      char s[65];
+      memset(s, 0, sizeof(s));
+      gethostname(s, sizeof(s)-1);
+      NSString *hostName = [NSString stringWithCString:s encoding:NSUTF8StringEncoding];
       aMailFile = [NSString stringWithFormat: @"%@:%@", [NSString stringWithFormat: @"%d.%d%d%d.%@",
 								  time(NULL), 
 								  getpid(),
 								  rand(),
 								  [_cacheManager count],
-								  [[NSProcessInfo processInfo] hostName]],
+								  hostName],
 			    ((id)theFlags ? (id)[theFlags maildirString] : (id)@"2,")];
       
       aMailFilePath = [NSString stringWithFormat: @"%@/cur/%@", _path, aMailFile];
