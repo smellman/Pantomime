@@ -57,7 +57,8 @@ static unsigned short version = 1;
 
   self = [super initWithPath: thePath];
 
-  _table = NSCreateMapTable(NSIntMapKeyCallBacks, NSObjectMapValueCallBacks, 128);
+//  _table = NSCreateMapTable(NSIntMapKeyCallBacks, NSObjectMapValueCallBacks, 128);
+  _table = [[NSMutableDictionary alloc] initWithCapacity:128];
   _count = _UIDValidity = 0;
   _folder = theFolder;
 
@@ -110,7 +111,8 @@ static unsigned short version = 1;
 {
   //NSLog(@"CWIMAPCacheManager: -dealloc");
   
-  NSFreeMapTable(_table);
+//  NSFreeMapTable(_table);
+  [_table release];
   if (_fd >= 0) close(_fd);
 
   [super dealloc];
@@ -196,7 +198,8 @@ static unsigned short version = 1;
 		quick: YES];
 
       [((CWFolder *)_folder)->allMessages addObject: aMessage];
-      NSMapInsert(_table, (void *)[aMessage UID], aMessage);
+//      NSMapInsert(_table, (void *)[aMessage UID], aMessage);
+      [_table setObject:aMessage forKey:(void *)[aMessage UID]];
       //[self addObject: aMessage]; // MOVE TO CWFIMAPOLDER
       //[((CWFolder *)_folder)->allMessages replaceObjectAtIndex: i  withObject: aMessage];
       RELEASE(aMessage);
@@ -213,7 +216,8 @@ static unsigned short version = 1;
 //
 - (void) removeMessageWithUID: (unsigned int) theUID
 {
-  NSMapRemove(_table, (void *)theUID);
+//  NSMapRemove(_table, (void *)theUID);
+  [_table removeObjectForKey:(void *)theUID];
 }
 
 //
@@ -221,7 +225,8 @@ static unsigned short version = 1;
 //
 - (CWIMAPMessage *) messageWithUID: (unsigned int) theUID
 {
-  return NSMapGet(_table, (void *)theUID);
+//  return NSMapGet(_table, (void *)theUID);
+  return [_table objectForKey:(void *)theUID];
 }
 
 //
@@ -332,7 +337,8 @@ static unsigned short version = 1;
   write_string(_fd, (unsigned char *)[theRecord->to bytes], [theRecord->to length]);
   write_string(_fd, (unsigned char *)[theRecord->cc bytes], [theRecord->cc length]);
   
-  NSMapInsert(_table, (void *)theRecord->imap_uid, theMessage);
+//  NSMapInsert(_table, (void *)theRecord->imap_uid, theMessage);
+  [_table setObject:theMessage forKey:(void *)theRecord->imap_uid];
   _count++;
 }
 

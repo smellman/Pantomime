@@ -23,7 +23,7 @@
 #ifndef _Pantomime_H_CWIMAPCacheManager
 #define _Pantomime_H_CWIMAPCacheManager
 
-#import <Foundation/NSMapTable.h>
+//#import <Foundation/NSMapTable.h>
 
 #include <Pantomime/CWCacheManager.h>
 
@@ -38,7 +38,8 @@
 @interface CWIMAPCacheManager: CWCacheManager
 {
   @private
-    NSMapTable *_table;
+//    NSMapTable *_table;
+    NSMutableDictionary *_table;
     unsigned int _UIDValidity;
 
     CWFolder *_folder;
