@@ -29,7 +29,7 @@
 #include <Pantomime/NSString+Extensions.h>
 
 #include <Foundation/NSAutoreleasePool.h>
-#include <Foundation/NSMapTable.h>
+//#include <Foundation/NSMapTable.h>
 
 //
 //
@@ -469,7 +469,8 @@
 //
 - (void) thread
 {
-  NSMapTable *id_table, *subject_table;
+//  NSMapTable *id_table, *subject_table;
+  NSMutableDictionary *id_table, *subject_table;
   NSAutoreleasePool *pool;
   int i, count;
 
@@ -480,7 +481,8 @@
   pool = [[NSAutoreleasePool alloc] init];
 
   // Build id_table and our containers mutable array
-  id_table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 16);
+  //id_table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 16);
+  id_table = [[NSMutableDictionary alloc] initWithCapacity:16];
   _allContainers = [[NSMutableArray alloc] init];
 
   //
@@ -515,8 +517,8 @@
       //
       // A.
       //
-      aContainer = NSMapGet(id_table, [aMessage messageID]);
-      
+      //aContainer = NSMapGet(id_table, [aMessage messageID]);
+      aContainer = [id_table objectForKey:[aMessage messageID]];
       if (aContainer)
 	{
 	  //aContainer->message = aMessage;
@@ -526,7 +528,8 @@
 	      aContainer = [[CWContainer alloc] init];
 	      aContainer->message = aMessage;
 	      [aMessage setProperty: aContainer  forKey: @"Container"];
-	      NSMapInsert(id_table, [aMessage messageID], aContainer);
+//	      NSMapInsert(id_table, [aMessage messageID], aContainer);
+          [id_table setObject:aContainer forKey:[aMessage messageID]];
 	      DESTROY(aContainer);
 	    }
 	}
@@ -535,7 +538,8 @@
 	  aContainer = [[CWContainer alloc] init];
 	  aContainer->message = aMessage;
 	  [aMessage setProperty: aContainer  forKey: @"Container"];
-	  NSMapInsert(id_table, [aMessage messageID], aContainer);
+//	  NSMapInsert(id_table, [aMessage messageID], aContainer);
+      [id_table setObject:aContainer forKey:[aMessage messageID]];
 	  DESTROY(aContainer);
 	}
       
@@ -548,8 +552,9 @@
 	  aReference = [[aMessage allReferences] objectAtIndex: j];
 
 	  // Find a container object for the given Message-ID
-	  aContainer = NSMapGet(id_table, aReference);
-	  
+//	  aContainer = NSMapGet(id_table, aReference);
+      aContainer = [id_table objectForKey:aReference];
+        
 	  if (aContainer)
 	    {
 	      // We found it. We use that.
@@ -558,7 +563,8 @@
 	  else 
 	    {
 	      aContainer = [[CWContainer alloc] init];
-	      NSMapInsert(id_table, aReference, aContainer);
+	      //NSMapInsert(id_table, aReference, aContainer);
+          [id_table setObject:aContainer forKey:aReference];
 	      RELEASE(aContainer);
 	    }
 	  
@@ -579,7 +585,8 @@
 	      aContainer->parent == nil)
 	    {
 	      // We grab the container of our current message
-	      [((CWContainer *)NSMapGet(id_table, [aMessage messageID])) setParent: aContainer];
+	      //[((CWContainer *)NSMapGet(id_table, [aMessage messageID])) setParent: aContainer];
+          [((CWContainer *)[id_table objectForKey:[aMessage messageID]]) setParent:aContainer];
 	    }
 	  
 	  // We set the child
@@ -600,7 +607,8 @@
       // NOTE: Again, aReference points to the last Message-ID in the References list
       
       // We get the container for the CURRENT message
-      aContainer = (CWContainer *)NSMapGet(id_table, [aMessage messageID]);
+      //aContainer = (CWContainer *)NSMapGet(id_table, [aMessage messageID]);
+      aContainer = (CWContainer *)[id_table objectForKey:[aMessage messageID]];
       
       // If we have no References and no In-Reply-To fields, we simply set a
       // the parent to nil since it can be the message that started the thread.
@@ -613,14 +621,18 @@
       else if ([[aMessage allReferences] count] == 0 &&
 	       [aMessage headerValueForName: @"In-Reply-To"])
 	{
-	  [aContainer setParent: (CWContainer *)NSMapGet(id_table, [aMessage headerValueForName: @"In-Reply-To"])];
+	  //[aContainer setParent: (CWContainer *)NSMapGet(id_table, [aMessage headerValueForName: @"In-Reply-To"])];
+      [aContainer setParent: (CWContainer *)[id_table objectForKey:[aMessage headerValueForName: @"In-Reply-To"]]];
 	  // FIXME, should we really do that? or should we do it in B?
-	  [(CWContainer *)NSMapGet(id_table, [aMessage headerValueForName: @"In-Reply-To"]) setChild: aContainer];
+	  //[(CWContainer *)NSMapGet(id_table, [aMessage headerValueForName: @"In-Reply-To"]) setChild: aContainer];
+        [(CWContainer *)[id_table objectForKey:[aMessage headerValueForName: @"In-Reply-To"]] setChild: aContainer];
 	}
       else
 	{
-	  [aContainer setParent: (CWContainer *)NSMapGet(id_table, aReference)];
-	  [(CWContainer *)NSMapGet(id_table, aReference) setChild: aContainer];
+	  //[aContainer setParent: (CWContainer *)NSMapGet(id_table, aReference)];
+      [aContainer setParent: (CWContainer *)[id_table objectForKey:aReference]];
+	  //[(CWContainer *)NSMapGet(id_table, aReference) setChild: aContainer];
+      [(CWContainer *)[id_table objectForKey:aReference] setChild: aContainer];
 	}
       
     } // for (i = 0; ...
@@ -628,7 +640,8 @@
   //
   // 2. Find the root set.
   //
-  [_allContainers addObjectsFromArray: NSAllMapTableValues(id_table)];
+//  [_allContainers addObjectsFromArray: NSAllMapTableValues(id_table)];
+  [_allContainers addObjectsFromArray: [id_table allValues]];
 
   //while (NO)
   for (i = ([_allContainers count] - 1); i >= 0; i--)
@@ -646,7 +659,8 @@
   //
   // 3. Discard id_table.
   //
-  NSFreeMapTable(id_table);
+//  NSFreeMapTable(id_table);
+  [id_table release];
 
   
   //
@@ -704,8 +718,9 @@
   //
   // A. Construct a new hash table, subject_table, which associates subject 
   //    strings with Container objects.
-  subject_table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 16);
-
+//  subject_table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 16);
+  subject_table = [[NSMutableDictionary alloc] initWithCapacity:16];
+    
   //
   // B. For each Container in the root set:
   //
@@ -742,22 +757,27 @@
 	  // o The container in the table has a ``Re:'' version of this subject, 
 	  //   and this container has a non-``Re:'' version of this subject. 
 	  //   The non-re version is the more interesting of the two.
-	  if (!NSMapGet(subject_table, aString))
+	  //if (!NSMapGet(subject_table, aString))
+      if (![subject_table objectForKey:aString])
 	    {
-	      NSMapInsert(subject_table, aString, aContainer);
+//	      NSMapInsert(subject_table, aString, aContainer);
+          [subject_table setObject:aContainer forKey:aString];
 	    }
 	  else
 	    {
 	      NSString *aSubject;
 	      
 	      // We obtain the subject of the message of our container.
-	      aSubject = [((CWContainer *)NSMapGet(subject_table, aString))->message subject];
+//	      aSubject = [((CWContainer *)NSMapGet(subject_table, aString))->message subject];
+          aSubject = [((CWContainer *)[subject_table objectForKey:aString])->message subject];
 
 	      if ([aSubject hasREPrefix] && ![[aMessage subject] hasREPrefix])
 		{
 		  // We replace the container
-		  NSMapRemove(subject_table, aString);
-		  NSMapInsert(subject_table, [aMessage subject], aContainer);
+		  //NSMapRemove(subject_table, aString);
+          [subject_table removeObjectForKey:aString];
+		  //NSMapInsert(subject_table, [aMessage subject], aContainer);
+          [subject_table setObject:aContainer forKey:[aMessage subject]];
 		}
 	    }
 	  
@@ -782,7 +802,8 @@
       
       // Look up the Container of that subject in the table.
       // If it is null, or if it is this container, continue.
-      containerFromTable = NSMapGet(subject_table, aString);
+//      containerFromTable = NSMapGet(subject_table, aString);
+      containerFromTable = [subject_table objectForKey:aString];
       if (!containerFromTable || containerFromTable == aContainer) 
 	{
 	  continue; 
@@ -835,7 +856,8 @@
 	}
     }
   
-  NSFreeMapTable(subject_table);
+//  NSFreeMapTable(subject_table);
+  [subject_table release];
 
   //
   // 6.  Now you're done threading!
