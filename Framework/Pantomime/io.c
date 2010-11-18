@@ -37,9 +37,7 @@
 
 #include <unistd.h>	// For read(), write() and close()
 
-#ifdef MACOSX
 #include <sys/uio.h>	// For read() and write() on OS X
-#endif
 
 #if !defined(FIONBIO) && !defined(__MINGW32__)
 #include <sys/filio.h>  // For FIONBIO on Solaris

@@ -38,7 +38,6 @@
 */
 @interface NSString (PantomimeStringExtensions)
 
-#ifdef MACOSX
 /*!
   @method stringByTrimmingWhiteSpaces
   @discussion This method is used to trim the leading and trailing
@@ -48,9 +47,6 @@
   @result The trimmed string.
 */
 - (NSString *) stringByTrimmingWhiteSpaces;
-#else
-#define stringByTrimmingWhiteSpaces stringByTrimmingSpaces
-#endif
 
 /*!
   @method indexOfCharacter:

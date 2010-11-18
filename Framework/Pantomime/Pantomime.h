@@ -61,9 +61,7 @@
 #include <Pantomime/CWLocalFolder+mbox.h>
 #include <Pantomime/CWLocalMessage.h>
 #include <Pantomime/CWLocalStore.h>
-#ifdef MACOSX
 #include <Pantomime/CWMacOSXGlue.h>
-#endif
 #include <Pantomime/CWMD5.h>
 #include <Pantomime/CWMessage.h>
 #include <Pantomime/CWMIMEMultipart.h>

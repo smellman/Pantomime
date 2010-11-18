@@ -513,11 +513,7 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
       bytes = (char *)[_wbuf mutableBytes];
       len = [_wbuf length];
 
-#ifdef MACOSX
       count = [_connection write: bytes  length: len > WRITE_BLOCK_SIZE ? WRITE_BLOCK_SIZE : len];
-#else
-      count = [_connection write: bytes  length: len];
-#endif
       // If nothing was written of if an error occured, we return.
       if (count <= 0)
 	{
@@ -555,7 +551,6 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
       
 	  // We enable the write callback under OS X.
 	  // See the rationale in -writeData:
-#ifdef MACOSX
 	  for (i = 0; i < [_runLoopModes count]; i++)
 	    {
 	      [[NSRunLoop currentRunLoop] addEvent: (void *)[_connection fd]
@@ -563,7 +558,6 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
 					  watcher: self
 					  forMode: [_runLoopModes objectAtIndex: i]];
 	    }
-#endif
 	}
     }
 }
@@ -678,12 +672,6 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
 //
 - (void) addRunLoopMode: (NSString *) theMode
 {
-#ifndef MACOSX
-  if (theMode && ![_runLoopModes containsObject: theMode])
-    {
-      [_runLoopModes addObject: theMode];
-    }
-#endif
 }
 
 
@@ -755,7 +743,6 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
   // Under Mac OS X, we must also create a CFSocket and a runloop source in order
   // to enabled callbacks write read/write availability.
   //
-#ifdef MACOSX 
   _context = (CFSocketContext *)malloc(sizeof(CFSocketContext));
   memset(_context, 0, sizeof(CFSocketContext));
   _context->info = self;
@@ -779,7 +766,6 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
   
   CFRunLoopAddSource(CFRunLoopGetCurrent(), _runLoopSource, kCFRunLoopCommonModes);
   NSMapInsert(fd_to_cfsocket, (void *)[_connection fd], (void *)_socket);
-#endif
 
   //NSLog(@"Adding watchers on %d", [_connection fd]);
 
@@ -864,7 +850,6 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
 #endif
     }
     
-#ifdef MACOSX
   if (CFRunLoopSourceIsValid(_runLoopSource))
     {
       CFRunLoopSourceInvalidate(_runLoopSource);
@@ -878,7 +863,6 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
   NSMapRemove(fd_to_cfsocket, (void *)[_connection fd]);
   CFRelease(_socket);
   free(_context);
-#endif
 }
 
 

@@ -33,7 +33,6 @@
 //
 // Useful macros that we must define ourself on OS X.
 //
-#ifdef MACOSX 
 #define RETAIN(object)          [object retain]
 #define RELEASE(object)         [object release]
 #define AUTORELEASE(object)     [object autorelease]
@@ -67,14 +66,11 @@ if (__value != __object) \
   [[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil]
 
 #define _(X) NSLocalizedString (X, @"")
-#endif
 
 //
 // We must define NSObject: -subclassResponsibility: on OS X.
 //
-#ifdef MACOSX
 #include <Pantomime/CWMacOSXGlue.h>
-#endif
 
 //
 // Some macros, to minimize the code.

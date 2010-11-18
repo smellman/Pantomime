@@ -23,7 +23,7 @@
 #ifndef _Pantomime_H_CWPOP3CacheManager
 #define _Pantomime_H_CWPOP3CacheManager
 
-#import <Foundation/NSMapTable.h>
+//#import <Foundation/NSMapTable.h>
 
 #include <Pantomime/CWCacheManager.h>
 
@@ -41,7 +41,8 @@
 @interface CWPOP3CacheManager: CWCacheManager
 {
   @private
-    NSMapTable *_table;
+    //NSMapTable *_table;
+    NSMutableDictionary *_table;
     unsigned int _count;
     int _fd;
 }

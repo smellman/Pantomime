@@ -39,12 +39,8 @@
 // We include the CoreFoundation headers under Mac OS X so we can support
 // more string encodings.
 //
-#ifdef MACOSX
 #include <CoreFoundation/CFString.h>
 #include <CoreFoundation/CFStringEncodingExt.h>
-#else
-#include <GNUstepBase/GSCategories.h>
-#endif
 
 #include <ctype.h>
 
@@ -59,7 +55,6 @@
 //
 @implementation NSString (PantomimeStringExtensions)
 
-#ifdef MACOSX
 - (NSString *) stringByTrimmingWhiteSpaces
 {
   NSMutableString *aMutableString;
@@ -69,7 +64,6 @@
   
   return AUTORELEASE(aMutableString);
 }
-#endif
 
 
 //
@@ -197,7 +191,6 @@
     {@""              ,NSISOLatin1StringEncoding      ,NO},  // To prevent a lame bug in Ximian Evolution
     {@"iso8859_1"     ,NSISOLatin1StringEncoding      ,NO},  // To prevent a lame bug in Openwave WebEngine
     {@"iso-8859-2"    ,NSISOLatin2StringEncoding      ,NO},
-#ifdef MACOSX
     {@"iso-8859-3"    ,kCFStringEncodingISOLatin3        ,YES},
     {@"iso-8859-4"    ,kCFStringEncodingISOLatin4        ,YES},
     {@"iso-8859-5"    ,kCFStringEncodingISOLatinCyrillic ,YES},
@@ -220,25 +213,6 @@
     {@"windows-1256"  ,kCFStringEncodingWindowsArabic    ,YES},
     {@"windows-1257"  ,kCFStringEncodingWindowsBalticRim ,YES},
     {@"windows-1258"  ,kCFStringEncodingWindowsVietnamese,YES},
-#else
-    {@"iso-8859-3"   ,NSISOLatin3StringEncoding                 ,NO},
-    {@"iso-8859-4"   ,NSISOLatin4StringEncoding                 ,NO},
-    {@"iso-8859-5"   ,NSISOCyrillicStringEncoding               ,NO},
-    {@"iso-8859-6"   ,NSISOArabicStringEncoding                 ,NO},
-    {@"iso-8859-7"   ,NSISOGreekStringEncoding                  ,NO},
-    {@"iso-8859-8"   ,NSISOHebrewStringEncoding                 ,NO},
-    {@"iso-8859-9"   ,NSISOLatin5StringEncoding                 ,NO},
-    {@"iso-8859-10"  ,NSISOLatin6StringEncoding                 ,NO},
-    {@"iso-8859-11"  ,NSISOThaiStringEncoding                   ,NO},
-    {@"iso-8859-13"  ,NSISOLatin7StringEncoding                 ,NO},
-    {@"iso-8859-14"  ,NSISOLatin8StringEncoding                 ,NO},
-    {@"iso-8859-15"  ,NSISOLatin9StringEncoding                 ,NO},
-    {@"koi8-r"       ,NSKOI8RStringEncoding                     ,NO},
-    {@"big5"         ,NSBIG5StringEncoding                      ,NO},
-    {@"gb2312"       ,NSGB2312StringEncoding                    ,NO},
-    {@"utf-7"        ,NSUTF7StringEncoding                      ,NO},
-    {@"unicode-1-1-utf-7", NSUTF7StringEncoding                 ,NO},  // To prever a bug (sort of) in MS Hotmail
-#endif
     {@"windows-1250" ,NSWindowsCP1250StringEncoding             ,NO},
     {@"windows-1251" ,NSWindowsCP1251StringEncoding             ,NO},
     {@"cyrillic (windows-1251)", NSWindowsCP1251StringEncoding  ,NO},  // To prevent a bug in MS Hotmail
@@ -260,7 +234,6 @@
 	{
 	  // Under OS X, we use CoreFoundation if necessary to convert the encoding
 	  // to a NSString encoding.
-#ifdef MACOSX
 	  if (encodings[i].fromCoreFoundation)
 	    {
 	      return CFStringConvertEncodingToNSStringEncoding(encodings[i].encoding);
@@ -269,9 +242,6 @@
 	    {
 	      return encodings[i].encoding;
 	    }
-#else
-	  return encodings[i].encoding;
-#endif
 	}
     }
 
@@ -497,114 +467,7 @@
 //
 - (NSString *) modifiedUTF7String
 {
-#ifndef MACOSX
-  NSMutableData *aMutableData, *modifiedData;
-  NSString *aString;
-
-  const char *b;
-  BOOL escaped;
-  unichar ch;
-  int i, len;
-
-  //
-  // We UTF-7 encode _only_ the non-ASCII parts.
-  //
-  aMutableData = [[NSMutableData alloc] init];
-  AUTORELEASE(aMutableData);
-  len = [self length];
-  
-  for (i = 0; i < len; i++)
-    {
-      ch = [self characterAtIndex: i];
-      
-      if (IS_PRINTABLE(ch))
-	{
-	  [aMutableData appendCFormat: @"%c", ch];
-	}
-      else
-	{
-	  int j;
-
-	  j = i+1;
-	  // We got a non-ASCII character, let's get the substring and encode it using UTF-7.
-	  while (j < len && !IS_PRINTABLE([self characterAtIndex: j]))
-	    {
-	      j++;
-	    }
-	  
-	  // Get the substring.
-	  [aMutableData appendData: [[self substringWithRange: NSMakeRange(i,j-i)] dataUsingEncoding: NSUTF7StringEncoding]];
-	  i = j-1;
-	}
-    }
-
-  b = [aMutableData bytes];
-  len = [aMutableData length];
-  escaped = NO;
-
-  //
-  // We replace:
-  //
-  // &   ->  &-
-  // +   ->  &
-  // +-  ->  +
-  // /   ->  ,
-  //
-  // in order to produce our modified UTF-7 string.
-  //
-  modifiedData = [[NSMutableData alloc] init];
-  AUTORELEASE(modifiedData);
-
-  for (i = 0; i < len; i++, b++)
-    {
-      if (!escaped && *b == '&')
-	{
-	  [modifiedData appendCString: "&-"];
-	}
-      else if (!escaped && *b == '+')
-	{
-	  if (*(b+1) == '-')
-	    {
-	      [modifiedData appendCString: "+"];
-	    }
-	  else
-	    {
-	      [modifiedData appendCString: "&"];
-
-	      // We enter the escaped mode.
-	      escaped = YES;
-	    }
-	}
-      else if (escaped && *b == '/')
-	{
-	  [modifiedData appendCString: ","];
-	}
-      else if (escaped && *b == '-')
-	{
-	  [modifiedData appendCString: "-"];
-
-	  // We leave the escaped mode.
-	  escaped = NO;
-	}
-      else
-	{
-	  [modifiedData appendCFormat: @"%c", *b];
-	}
-    }
-  
-  // If we're still in the escaped mode we haven't added our trailing -,
-  // let's add it right now.
-  if (escaped)
-    {
-      [modifiedData appendCString: "-"];
-    }
-
-  aString = AUTORELEASE([[NSString alloc] initWithData: modifiedData  encoding: NSASCIIStringEncoding]);
-
-  return (aString != nil ? aString : self);
-#else
   return self;
-#endif
 }
 
 
@@ -613,69 +476,7 @@
 //
 - (NSString *) stringFromModifiedUTF7
 {
-#ifndef MACOSX
-  NSMutableData *aMutableData;
-
-  BOOL escaped;
-  unichar ch;
-  int i, len;
-
-  aMutableData = [[NSMutableData alloc] init];
-  AUTORELEASE(aMutableData);
-
-  len = [self length];
-  escaped = NO;
-
-  //
-  // We replace:
-  //
-  // &   ->  +
-  // &-  ->  &
-  // ,   ->  /
-  //
-  // If we are in escaped mode. That is, between a &....-
-  //
-  for (i = 0; i < len; i++)
-    {
-      ch = [self characterAtIndex: i];
-      
-      if (!escaped && ch == '&')
-	{
-	  if ( (i+1) < len && [self characterAtIndex: (i+1)] != '-' )
-	    {
-	      [aMutableData appendCString: "+"];
-	      
-	      // We enter the escaped mode.
-	      escaped = YES;
-	    }
-	  else
-	    {
-	      // We replace &- by &
-	      [aMutableData appendCString: "&"];
-	      i++;
-	    }
-	}
-      else if (escaped && ch == ',')
-	{
-	  [aMutableData appendCString: "/"];
-	}
-      else if (escaped && ch == '-')
-	{
-	  [aMutableData appendCString: "-"];
-
-	  // We leave the escaped mode.
-	  escaped = NO;
-	}
-      else
-	{
-	  [aMutableData appendCFormat: @"%c", ch];
-	}
-    }
-
-  return AUTORELEASE([[NSString alloc] initWithData: aMutableData  encoding: NSUTF7StringEncoding]);
-#else
   return nil;
-#endif
 }
 
 

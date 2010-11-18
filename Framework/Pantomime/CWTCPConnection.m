@@ -45,9 +45,7 @@
 #include <string.h>
 #include <unistd.h>	// For read() and write() and close()
 
-#ifdef MACOSX
 #include <sys/uio.h>	// For read() and write() on OS X
-#endif
 
 #ifndef FIONBIO
 #include <sys/filio.h>  // For FIONBIO on Solaris

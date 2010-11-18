@@ -96,7 +96,8 @@ static unsigned short version = 1;
   NSDictionary *attributes;
   unsigned short int v;
   
-  _table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 128);
+  //_table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 128);
+  _table = [[NSMutableDictionary alloc] initWithCapacity:128];
   _count = 0;
   
   if ((_fd = open([thePath UTF8String], O_RDWR|O_CREAT, S_IRUSR|S_IWUSR)) < 0) 
@@ -146,7 +147,8 @@ static unsigned short version = 1;
 
 	  aUID = AUTORELEASE([[NSString alloc] initWithData: [NSData dataWithBytes: s  length: len]
 					       encoding: NSASCIIStringEncoding]);
-	  NSMapInsert(_table, aUID, aDate);
+	  //NSMapInsert(_table, aUID, aDate);
+      [_table setObject:aDate forKey:aUID];
 	}
       
       free(s);
@@ -166,7 +168,8 @@ static unsigned short version = 1;
 {
   //NSLog(@"CWPOP3CacheManager: -dealloc, _fd was = %d", _fd);
   
-  NSFreeMapTable(_table);
+  //NSFreeMapTable(_table);
+  [_table release];
   if (_fd >= 0) close(_fd);
   [super dealloc];
 }
@@ -185,7 +188,8 @@ static unsigned short version = 1;
 {
   self = [super initWithPath: nil];
 
-  _table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 128);
+  //_table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 128);
+  _table = [[NSMutableDictionary alloc] initWithCoder:128];
   _fd = -1;
 
   [self setCache: [theCoder decodeObject]];
@@ -199,7 +203,8 @@ static unsigned short version = 1;
 //
 - (NSDate *) dateForUID: (NSString *) theUID
 {
-  return NSMapGet(_table, theUID);
+//  return NSMapGet(_table, theUID);
+  return [_table objectForKey:theUID];
 }
 
 

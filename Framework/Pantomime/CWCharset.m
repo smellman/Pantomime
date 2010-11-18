@@ -193,10 +193,8 @@ static NSMutableDictionary *charset_instance_cache = nil;
       [charset_name_description setObject: _(@"Simplified Chinese (GB2312)")        forKey: @"gb2312"];
       [charset_name_description setObject: _(@"UTF-8")                              forKey: @"utf-8"];
 
-#ifdef MACOSX
       [charset_name_description setObject: _(@"Korean (EUC-KR/KS C 5601)")          forKey: @"euc-kr"];
       [charset_name_description setObject: _(@"Japanese (Win/Mac)")                 forKey: @"shift_jis"];
-#endif
     }
 
   return charset_name_description;
