@@ -32,7 +32,7 @@
 #include <Foundation/NSNotification.h>
 #include <Foundation/NSPathUtilities.h>
 #include <Foundation/NSProcessInfo.h>
-#include <Foundation/NSTask.h>
+//#include <Foundation/NSTask.h>
 
 #include <stdio.h>
 
@@ -153,6 +153,7 @@
 //
 - (void) sendMessage
 {
+    /*
   NSString *aString, *aFilename;
   NSFileHandle *aFileHandle;
   NSRange aRange; 
@@ -232,6 +233,7 @@
   
   [[NSFileManager defaultManager] removeFileAtPath: aFilename
 				  handler: nil];
+     */
 }
 
 @end
