@@ -143,6 +143,8 @@
 		535F4B871292725200953978 /* NSString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4B011292725200953978 /* NSString+Extensions.h */; };
 		535F4B881292725200953978 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F4B021292725200953978 /* NSString+Extensions.m */; };
 		535F4B891292725200953978 /* Pantomime.h in Headers */ = {isa = PBXBuildFile; fileRef = 535F4B031292725200953978 /* Pantomime.h */; };
+		53D85E9712A634BB00E5E591 /* StdMapIntWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 53D85E9512A634BB00E5E591 /* StdMapIntWrapper.h */; };
+		53D85E9812A634BB00E5E591 /* StdMapIntWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53D85E9612A634BB00E5E591 /* StdMapIntWrapper.mm */; };
 		AA747D9F0F9514B9006C5449 /* Pantomime_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Pantomime_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -303,6 +305,8 @@
 		535F4B021292725200953978 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Extensions.m"; path = "Framework/Pantomime/NSString+Extensions.m"; sourceTree = "<group>"; };
 		535F4B031292725200953978 /* Pantomime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pantomime.h; path = Framework/Pantomime/Pantomime.h; sourceTree = "<group>"; };
 		535F4B941292743600953978 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = openssl.xcodeproj; sourceTree = OPENSSL_SRC; };
+		53D85E9512A634BB00E5E591 /* StdMapIntWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StdMapIntWrapper.h; path = Framework/Pantomime/StdMapIntWrapper.h; sourceTree = "<group>"; };
+		53D85E9612A634BB00E5E591 /* StdMapIntWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = StdMapIntWrapper.mm; path = Framework/Pantomime/StdMapIntWrapper.mm; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* Pantomime_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pantomime_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libPantomime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPantomime.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -355,6 +359,8 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				53D85E9512A634BB00E5E591 /* StdMapIntWrapper.h */,
+				53D85E9612A634BB00E5E591 /* StdMapIntWrapper.mm */,
 				535F4A7D1292725200953978 /* CWCacheManager.h */,
 				535F4A7E1292725200953978 /* CWCacheManager.m */,
 				535F4A7F1292725200953978 /* CWCharset.h */,
@@ -587,6 +593,7 @@
 				535F4B851292725200953978 /* NSScanner+Extensions.h in Headers */,
 				535F4B871292725200953978 /* NSString+Extensions.h in Headers */,
 				535F4B891292725200953978 /* Pantomime.h in Headers */,
+				53D85E9712A634BB00E5E591 /* StdMapIntWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +729,7 @@
 				535F4B841292725200953978 /* NSFileManager+Extensions.m in Sources */,
 				535F4B861292725200953978 /* NSScanner+Extensions.m in Sources */,
 				535F4B881292725200953978 /* NSString+Extensions.m in Sources */,
+				53D85E9812A634BB00E5E591 /* StdMapIntWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +769,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/Pantomime.dst;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pantomime_Prefix.pch;
