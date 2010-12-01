@@ -98,7 +98,8 @@ Pantomime_OBJC_FILES = \
 	NSData+Extensions.m \
 	NSFileManager+Extensions.m \
 	NSScanner+Extensions.m \
-	NSString+Extensions.m
+	NSString+Extensions.m \
+    StdMapIntWrapper.mm
 
 # The Headers that are to be installed with the Pantomime Framework
 Pantomime_HEADER_FILES = \
@@ -169,6 +170,7 @@ Pantomime_HEADER_FILES = \
 	NSFileManager+Extensions.h \
 	NSScanner+Extensions.h \
 	NSString+Extensions.h \
+    StdMapIntWrapper.h \
 	Pantomime.h
 
 Pantomime_RESOURCE_FILES = \
