@@ -89,5 +89,6 @@
 #include <Pantomime/CWWINDOWS_1252.h>
 #include <Pantomime/CWWINDOWS_1253.h>
 #include <Pantomime/CWWINDOWS_1254.h>
+#include <Pantomime/StdMapIntWrapper.h>
 
 #endif // _Pantomime_H_Pantomime
