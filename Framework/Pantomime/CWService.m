@@ -34,6 +34,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <Pantomime/StdMapIntWrapper.h>
+
 //
 // It's important that the read buffer be bigger than the PMTU. Since almost all networks
 // permit 1500-byte packets and few permit more, the PMTU will generally be around 1500.
@@ -67,7 +69,9 @@
 //
 // OS X's implementation of the GNUstep RunLoop Extensions
 //
-static NSMapTable *fd_to_cfsocket;
+//static NSMapTable *fd_to_cfsocket;
+//static NSMutableDictionary *fd_to_cfsocket;
+static StdMapIntWrapper *fd_to_cfsocket;
 
 void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void* data, void* info)
 {
@@ -109,7 +113,8 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
   int fd;
   
   fd = (int)data;
-  socket = (CFSocketRef)NSMapGet(fd_to_cfsocket, (void*)fd);
+  //socket = (CFSocketRef)NSMapGet(fd_to_cfsocket, (void*)fd);
+  socket = (CFSocketRef)[fd_to_cfsocket valueForKey:(void*)fd];
   
   // We prevent dealing with callbacks when the socket is NOT
   // in a connected state. This can happen, under OS X, if
@@ -144,7 +149,8 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
   int fd;
   
   fd = (int)data;
-  socket = (CFSocketRef)NSMapGet(fd_to_cfsocket, (void*)fd);
+  //socket = (CFSocketRef)NSMapGet(fd_to_cfsocket, (void*)fd);
+  socket = (CFSocketRef)[fd_to_cfsocket valueForKey:(void*)fd];
   
   // See the description in -addEvent: type: watcher: forMode:.
   if (!socket)
@@ -175,7 +181,10 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
 
 + (void) initialize
 {
-  fd_to_cfsocket = NSCreateMapTable(NSIntMapKeyCallBacks, NSIntMapValueCallBacks, 16);  
+//  fd_to_cfsocket = NSCreateMapTable(NSIntMapKeyCallBacks, NSIntMapValueCallBacks, 16);  
+//  fd_to_cfsocket = [[NSMutableDictionary alloc] initWithCapacity:16];
+  // Don't implement initWithCapacity 
+  fd_to_cfsocket = [[StdMapIntWrapper alloc] init];
 }
 
 
@@ -765,8 +774,9 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
     }
   
   CFRunLoopAddSource(CFRunLoopGetCurrent(), _runLoopSource, kCFRunLoopCommonModes);
-  NSMapInsert(fd_to_cfsocket, (void *)[_connection fd], (void *)_socket);
-
+//  NSMapInsert(fd_to_cfsocket, (void *)[_connection fd], (void *)_socket);
+  [fd_to_cfsocket setValue:(void *)_socket forKey:(void *)[_connection fd]];
+    
   //NSLog(@"Adding watchers on %d", [_connection fd]);
 
   for (i = 0; i < [_runLoopModes count]; i++)
@@ -860,7 +870,8 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
       CFSocketInvalidate(_socket);
     }
 
-  NSMapRemove(fd_to_cfsocket, (void *)[_connection fd]);
+//  NSMapRemove(fd_to_cfsocket, (void *)[_connection fd]);
+  [fd_to_cfsocket removeValueForKey:(void *)[_connection fd]];
   CFRelease(_socket);
   free(_context);
 }

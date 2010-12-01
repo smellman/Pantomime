@@ -31,7 +31,7 @@
 #import <Foundation/NSRunLoop.h>
 #import <Foundation/NSTimer.h>
 
-#import <Foundation/NSMapTable.h>
+//#import <Foundation/NSMapTable.h>
 #include <CoreFoundation/CoreFoundation.h>
 
 /*!
