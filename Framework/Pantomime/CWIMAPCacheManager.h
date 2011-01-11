@@ -91,6 +91,15 @@
   @param theMessage The message associated to the record <i>theRecord</i>.
 */
 - (void) writeRecord: (cache_record *) theRecord  message: (id) theMessage;
+
+/*!
+  @method initWithPath:folder:
+  @discussion ...
+  @param The complete path where the cache will be eventually
+         saved to.
+  @param theFolder ...
+ */
+- (id) initWithPath: (NSString *) thePath  folder: (id) theFolder;
 @end
 
 #endif // _Pantomime_H_CWIMAPCacheManager
