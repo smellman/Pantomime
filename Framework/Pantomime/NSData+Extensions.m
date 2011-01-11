@@ -20,13 +20,13 @@
 **  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#include "Pantomime/NSData+Extensions.h"
+#include <Pantomime/NSData+Extensions.h>
 
 #include <Foundation/NSArray.h>
 #include <Foundation/NSException.h>
 #include <Foundation/NSString.h>
 
-#include "Pantomime/CWConstants.h"
+#include <Pantomime/CWConstants.h>
 
 #include <stdlib.h>
 #include <string.h>
