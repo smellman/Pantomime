@@ -38,8 +38,9 @@
   unsigned long current_attributes, desired_attributes;
   
   
-  currentFileAttributes = [[NSMutableDictionary alloc] initWithDictionary: [self fileAttributesAtPath: thePath
-										 traverseLink: YES]];
+    NSError *error = nil;
+    currentFileAttributes = [[NSMutableDictionary alloc] initWithDictionary: [self attributesOfItemAtPath: thePath
+                                                                                                    error: &error]];
   
   current_attributes = [currentFileAttributes filePosixPermissions];
   desired_attributes = theMode;
@@ -49,8 +50,9 @@
       [currentFileAttributes setObject: [NSNumber numberWithUnsignedLong: desired_attributes]
 			     forKey: NSFilePosixPermissions];
       
-      [self changeFileAttributes: currentFileAttributes
-	    atPath: thePath];
+        [self setAttributes: currentFileAttributes
+               ofItemAtPath: thePath
+                      error: nil];
     }
 
   [currentFileAttributes release];

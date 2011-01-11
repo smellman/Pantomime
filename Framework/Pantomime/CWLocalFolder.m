@@ -89,8 +89,8 @@
       // We verify if a <name>.tmp was present. If yes, we simply remove it.
       if ([[NSFileManager defaultManager] fileExistsAtPath: [thePath stringByAppendingString: @".tmp"]])
 	{
-	  [[NSFileManager defaultManager] removeFileAtPath: [thePath stringByAppendingString: @".tmp"]
-					  handler: nil];
+        [[NSFileManager defaultManager] removeItemAtPath: [thePath stringByAppendingString: @".tmp"]
+                                                   error: nil];
 	}
     }
 
@@ -149,8 +149,8 @@
 	  
 	  aFileManager = [NSFileManager defaultManager];
 	  
-	  if ([[aFileManager directoryContentsAtPath: [NSString stringWithFormat: @"%@/new", _path]] count] > 0 || 
-	      [[aFileManager directoryContentsAtPath: [NSString stringWithFormat: @"%@/tmp", _path]] count] > 0)
+        if ([[aFileManager contentsOfDirectoryAtPath: [NSString stringWithFormat: @"%@/new", _path] error: nil] count] > 0 || 
+            [[aFileManager contentsOfDirectoryAtPath: [NSString stringWithFormat: @"%@/tmp", _path] error: nil] count] > 0)
 	    {
 	      pool = [[NSAutoreleasePool alloc] init];
 	      [self parse_maildir: @"new"  all: theBOOL];
@@ -466,7 +466,7 @@
       [dateFormatter setDateFormat:@"%a %b %d %H:%M:%S %Y"];
       aString = [NSString stringWithFormat: @"From %@ %@\n", aSender, 
 			  [dateFormatter stringFromDate:aDate]];
-      [aMutableData insertCString: [aString cString] atIndex: 0];
+        [aMutableData insertCString: [aString cStringUsingEncoding: NSUTF8StringEncoding] atIndex: 0];
     }
   
   // We MUST replace every "\nFrom " in the message by "\n From ", if we have a mbox file.
@@ -553,7 +553,7 @@
       fclose(aStream);
       curFilePath = [NSString stringWithFormat: @"%@/cur/%@", _path, aMailFile];
       
-      if ([[NSFileManager defaultManager] movePath: aMailFilePath  toPath: curFilePath  handler: nil])
+        if ([[NSFileManager defaultManager] moveItemAtPath: aMailFilePath  toPath: curFilePath  error: nil])
 	{
 	  [aMessage setMailFilename: curFilePath];
 	  

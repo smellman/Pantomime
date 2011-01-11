@@ -720,7 +720,7 @@ static NSData *CRLF;
       int count, i, index;
 
       // We get the index of the message we are parsing...
-      sscanf([((CWPOP3QueueObject *)[_queue lastObject])->arguments cString], "RETR %d", &index);
+        sscanf([((CWPOP3QueueObject *)[_queue lastObject])->arguments cStringUsingEncoding: defaultCStringEncoding], "RETR %d", &index);
 
       aMessage = (CWPOP3Message *)[_folder messageAtIndex: (index-1)];
       aMutableData = [[NSMutableData alloc] initWithCapacity: [aMessage size]];
@@ -856,7 +856,7 @@ static NSData *CRLF;
       int count, i, index, num;
 
       // We get the index of the message we are parsing...
-      sscanf([((CWPOP3QueueObject *)[_queue lastObject])->arguments cString], "TOP %d %d", &index, &num);
+        sscanf([((CWPOP3QueueObject *)[_queue lastObject])->arguments cStringUsingEncoding: defaultCStringEncoding], "TOP %d %d", &index, &num);
 
       //NSLog(@"PARTIALLY DECODING MESSAGE no. %d - number of lines %d!", index, num);
       
@@ -893,7 +893,7 @@ static NSData *CRLF;
     {
        memset(buf, 0, 71);
        sscanf([[_responsesFromServer objectAtIndex: i] cString],"%i %s", &index, buf);
-       [[_folder->allMessages objectAtIndex: (index-1)] setUID: [NSString stringWithCString: buf]];
+        [[_folder->allMessages objectAtIndex: (index-1)] setUID: [NSString stringWithCString: buf encoding:NSUTF8StringEncoding]];
     }
 
   POST_NOTIFICATION(PantomimeFolderPrefetchCompleted, self, [NSDictionary dictionaryWithObject: _folder  forKey: @"Folder"]);

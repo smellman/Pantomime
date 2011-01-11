@@ -80,12 +80,12 @@ static unsigned short version = 1;
   // We get the attributes of the mailbox
   if ([theFolder type] == PantomimeFormatMbox)
     {
-      attributes = [[NSFileManager defaultManager] fileAttributesAtPath: [theFolder path]  traverseLink: NO];
+      attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: [theFolder path]  error: nil];
     }
   else
     {
-      attributes = [[NSFileManager defaultManager] fileAttributesAtPath: [NSString stringWithFormat: @"%@/cur", [theFolder path]]
-						   traverseLink: NO];
+      attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: [NSString stringWithFormat: @"%@/cur", [theFolder path]]
+						   error: nil];
     }
 
   d = [[attributes objectForKey: NSFileModificationDate] timeIntervalSince1970];
@@ -93,7 +93,7 @@ static unsigned short version = 1;
   broken = NO;
 
   // We get the attribtes of the cache
-  attributes = [[NSFileManager defaultManager] fileAttributesAtPath: thePath  traverseLink: NO];
+  attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: thePath  error: nil];
 
   _folder = theFolder;
   _count = _modification_date = 0;
@@ -351,13 +351,13 @@ static unsigned short version = 1;
 
   if ([(CWLocalFolder *)_folder type] == PantomimeFormatMbox)
     {
-      attributes = [[NSFileManager defaultManager] fileAttributesAtPath: [(CWLocalFolder *)_folder path]
-						   traverseLink: NO];
+      attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: [(CWLocalFolder *)_folder path]
+						   error: nil];
     }
   else
     {
-      attributes = [[NSFileManager defaultManager] fileAttributesAtPath: [NSString stringWithFormat: @"%@/cur", [(CWLocalFolder *)_folder path]]
-						   traverseLink: NO];
+      attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: [NSString stringWithFormat: @"%@/cur", [(CWLocalFolder *)_folder path]]
+						   error: nil];
     }
   
   _modification_date = [[attributes objectForKey: NSFileModificationDate] timeIntervalSince1970];
@@ -617,8 +617,8 @@ static unsigned short version = 1;
 
   if ([(CWLocalFolder *)_folder type] == PantomimeFormatMbox)
       {
-	attributes = [[NSFileManager defaultManager] fileAttributesAtPath: [(CWLocalFolder *)_folder path]
-						     traverseLink: NO];
+	attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: [(CWLocalFolder *)_folder path]
+						     error: nil];
 	
 	_modification_date = [[attributes objectForKey: NSFileModificationDate] timeIntervalSince1970];
 	_size = [[attributes objectForKey: NSFileSize] intValue];
@@ -627,8 +627,8 @@ static unsigned short version = 1;
       }
   else
     {
-      attributes = [[NSFileManager defaultManager] fileAttributesAtPath: [NSString stringWithFormat: @"%@/cur", [(CWLocalFolder *)_folder path]]
-						   traverseLink: NO];
+      attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: [NSString stringWithFormat: @"%@/cur", [(CWLocalFolder *)_folder path]]
+						   error: nil];
       _modification_date = [[attributes objectForKey: NSFileModificationDate] timeIntervalSince1970];
       _size = 0;
       write_unsigned_int(_fd, _modification_date);

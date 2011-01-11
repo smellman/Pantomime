@@ -150,7 +150,7 @@ void md5_hmac(unsigned char *digest, const unsigned char* text, int text_len, co
       int i;
 
       s = (unsigned char*)[_data cString];
-      md5_hmac(result, s, strlen((char*)s), (unsigned char*)[thePassword cString], [thePassword length]);
+        md5_hmac(result, s, strlen((char*)s), (unsigned char*)[thePassword cStringUsingEncoding: NSUTF8StringEncoding], [thePassword length]);
       
       aMutableString = [[NSMutableString alloc] init];
 

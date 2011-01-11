@@ -209,13 +209,13 @@
 		    {
 		      seenStatus = YES;
 		      memset(aLine, 0, 1024);
-		      sprintf(aLine, "Status: %s\n", [[theFlags statusString] cString]); 
+                sprintf(aLine, "Status: %s\n", [[theFlags statusString] cStringUsingEncoding: NSUTF8StringEncoding]); 
 		    }
 		  else if (strncasecmp(aLine,"X-Status:", 9) == 0)
 		    {
 		      seenXStatus = YES;
 		      memset(aLine, 0, 1024);
-		      sprintf(aLine, "X-Status: %s\n", [[theFlags xstatusString] cString]); 
+                sprintf(aLine, "X-Status: %s\n", [[theFlags xstatusString] cStringUsingEncoding: NSUTF8StringEncoding]); 
 		    }
 #endif
 		}
@@ -266,11 +266,11 @@
       [self close_mbox];
       
       // Now that everything is alright, replace <folder name> by <folder name>.tmp
-      [[NSFileManager defaultManager] removeFileAtPath: pathToMailbox
-				      handler: nil];
-      [[NSFileManager defaultManager] movePath: [NSString stringWithFormat: @"%@.tmp", pathToMailbox]
-				      toPath: pathToMailbox
-				      handler: nil];
+        [[NSFileManager defaultManager] removeItemAtPath: pathToMailbox
+                                                   error: nil];
+        [[NSFileManager defaultManager] moveItemAtPath: [NSString stringWithFormat: @"%@.tmp", pathToMailbox]
+                                                toPath: pathToMailbox
+                                                 error: nil];
       
       // We sync our cache
       //[_cacheManager synchronize];
@@ -291,8 +291,8 @@
     {
       NSLog(@"Writing to %@ failed. We keep the original mailbox.", pathToMailbox);
       NSLog(@"This can be due to the fact that your partition containing this mailbox is full or that you don't have write permission in the directory where this mailbox is.");
-      [[NSFileManager defaultManager] removeFileAtPath: [NSString stringWithFormat: @"%@.tmp", pathToMailbox]
-				      handler: nil];
+        [[NSFileManager defaultManager] removeItemAtPath: [NSString stringWithFormat: @"%@.tmp", pathToMailbox]
+                                                   error: nil];
       POST_NOTIFICATION(PantomimeFolderExpungeFailed, self, nil);
       PERFORM_SELECTOR_2([[self store] delegate], @selector(folderExpungeFailed:), PantomimeFolderExpungeFailed, self, @"Folder");
       return;

@@ -61,8 +61,8 @@
       
       if ([theFlags contain: PantomimeDeleted])
 	{
-	  [[NSFileManager defaultManager] removeFileAtPath: [NSString stringWithFormat: @"%@/cur/%@", [self path], [aMessage mailFilename]]
-					  handler: nil];
+        [[NSFileManager defaultManager] removeItemAtPath: [NSString stringWithFormat: @"%@/cur/%@", [self path], [aMessage mailFilename]]
+                                                   error: nil];
 	  [aMutableArray addObject: aMessage];
 	}
       else
@@ -92,10 +92,10 @@
 	  newFileName = [NSString stringWithFormat: @"%@:%@", uniquePattern, [theFlags maildirString]];
 
 	  // We rename the message file
-	  if ([[NSFileManager defaultManager] movePath: [NSString stringWithFormat: @"%@/cur/%@", [self path], [aMessage mailFilename]]
-					      toPath: [NSString stringWithFormat: @"%@/cur/%@", [self path], newFileName]
-					      handler: nil])
-	    {
+          if ([[NSFileManager defaultManager] moveItemAtPath: [NSString stringWithFormat: @"%@/cur/%@", [self path], [aMessage mailFilename]]
+                                                      toPath: [NSString stringWithFormat: @"%@/cur/%@", [self path], newFileName]
+                                                       error: nil])
+          {
 	      [aMessage setMailFilename: newFileName];
 	    }
 	}
@@ -141,7 +141,7 @@
 
   // Read the directory
   aPath = [NSString stringWithFormat: @"%@/%@", _path, theDirectory];
-  allFiles = [[NSMutableArray alloc] initWithArray: [aFileManager directoryContentsAtPath: aPath]];
+    allFiles = [[NSMutableArray alloc] initWithArray: [aFileManager contentsOfDirectoryAtPath: aPath error: nil]];
 
   // We remove Apple Mac OS X .DS_Store file
   [allFiles removeObject: @".DS_Store"];
@@ -177,7 +177,7 @@
 	  // move it to the "cur" directory
 	  if (b)
 	    {
-	      [aFileManager movePath: thisMailFile  toPath: aNewPath  handler: nil];
+            [aFileManager moveItemAtPath: thisMailFile  toPath: aNewPath  error: nil];
 	    }	  
 	}
 

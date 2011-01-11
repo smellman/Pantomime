@@ -389,7 +389,10 @@
       NSString *aString;
 
       aString = [NSString stringWithFormat: @"%@/%@", _path, theName];
-      b = [aFileManager createDirectoryAtPath: aString  attributes: nil];
+        b = [aFileManager createDirectoryAtPath: aString 
+                    withIntermediateDirectories: YES
+                                     attributes: nil
+                                          error: nil];
       
       if (b)
 	{
@@ -418,7 +421,7 @@
     {
       int size;
       
-      size = [[[aFileManager fileAttributesAtPath: pathToFile traverseLink: NO] objectForKey: NSFileSize] intValue];
+        size = [[[aFileManager attributesOfItemAtPath: pathToFile error: nil] objectForKey: NSFileSize] intValue];
       
       // If we got an empty file or simply a directory...
       if (size == 0 || is_dir)
@@ -429,12 +432,15 @@
 	  // file to a directory. We also remove the cache file.
 	  if (size == 0)
 	    {
-	      [aFileManager removeFileAtPath:
-			      [NSString stringWithFormat: @"%@/.%@.cache",
-					[pathToFile substringToIndex: ([pathToFile length]-[[pathToFile lastPathComponent] length]-1)],
-					[pathToFile lastPathComponent]]  handler: nil];
-	      [aFileManager removeFileAtPath: pathToFile  handler: nil];
-	      [aFileManager createDirectoryAtPath: pathToFile  attributes: nil];
+            [aFileManager removeItemAtPath:
+             [NSString stringWithFormat: @"%@/.%@.cache",
+              [pathToFile substringToIndex: ([pathToFile length]-[[pathToFile lastPathComponent] length]-1)],
+              [pathToFile lastPathComponent]]  error: nil];
+            [aFileManager removeItemAtPath: pathToFile  error: nil];
+            [aFileManager createDirectoryAtPath: pathToFile 
+                    withIntermediateDirectories: YES 
+                                     attributes: nil 
+                                          error: nil];
 	    }
 	  
 	  // We can now proceed with the creation of our store.
@@ -444,22 +450,34 @@
 	    case PantomimeFormatMaildir:
 	      // Create the main maildir directory
 	      aString = [NSString stringWithFormat: @"%@/%@", _path, theName];  
-	      b = [aFileManager createDirectoryAtPath: aString  attributes: nil];
+                b = [aFileManager createDirectoryAtPath: aString 
+                            withIntermediateDirectories: YES  
+                                             attributes: nil
+                                                  error: nil];
 	      [[NSFileManager defaultManager] enforceMode: 0700  atPath: aString];
 								    
 	      // Now create the cur, new, and tmp sub-directories.
 	      aString = [NSString stringWithFormat: @"%@/%@/cur", _path, theName];
-	      b = b & [aFileManager createDirectoryAtPath: aString  attributes: nil];
+                b = b & [aFileManager createDirectoryAtPath: aString
+                                withIntermediateDirectories: YES
+                                                 attributes: nil
+                                                      error: nil];
 	      [[NSFileManager defaultManager] enforceMode: 0700  atPath: aString];
 	      
 	      // new
 	      aString = [NSString stringWithFormat: @"%@/%@/new", _path, theName];
-	      b = b & [aFileManager createDirectoryAtPath: aString  attributes: nil];
+                b = b & [aFileManager createDirectoryAtPath: aString
+                                withIntermediateDirectories: YES
+                                                 attributes: nil
+                                                      error: nil];
 	      [[NSFileManager defaultManager] enforceMode: 0700  atPath: aString];
 
 	      // tmp
 	      aString = [NSString stringWithFormat: @"%@/%@/tmp", _path, theName];
-	      b = b & [aFileManager createDirectoryAtPath: aString  attributes: nil];
+                b = b & [aFileManager createDirectoryAtPath: aString 
+                                withIntermediateDirectories: YES
+                                                 attributes: nil
+                                                      error: nil];
 	      [[NSFileManager defaultManager] enforceMode: 0700  atPath: aString];
 	      break;
 	      
@@ -527,14 +545,14 @@
 	  // FIXME - Verify the Store's path.
 	  // If it doesn't contain any mailboxes and it's actually not or Store's path, we remove it.
 	  theEntries = [theEnumerator allObjects];
-	  dirContents = [aFileManager directoryContentsAtPath: [NSString stringWithFormat: @"%@/%@",
-									 _path, theName]];
+        dirContents = [aFileManager contentsOfDirectoryAtPath: [NSString stringWithFormat: @"%@/%@",
+                                                                _path, theName] error: nil];
 	  if ([theEntries count] == 0)
 	    {
-	      aBOOL = [aFileManager removeFileAtPath: [NSString stringWithFormat: @"%@/%@",
-								_path, theName]
-				    handler: nil];
-	      
+            aBOOL = [aFileManager removeItemAtPath: [NSString stringWithFormat: @"%@/%@",
+                                                     _path, theName]
+                                             error: nil];
+            
 	      // Rebuild the folder tree
 	      if (aBOOL)
 		{
@@ -580,10 +598,10 @@
 	}
 
       // We remove the mbox or maildir store
-      aBOOL = [aFileManager removeFileAtPath: [NSString stringWithFormat: @"%@/%@",
-							_path, theName]
-			    handler: nil];
-      
+        aBOOL = [aFileManager removeItemAtPath: [NSString stringWithFormat: @"%@/%@",
+                                                 _path, theName]
+                                         error: nil];
+        
       // We remove the cache, if the store deletion was successful
       if (aBOOL)
 	{
@@ -591,11 +609,11 @@
 
 	  aString = [theName lastPathComponent];
 	  
-	  [[NSFileManager defaultManager] removeFileAtPath: [NSString stringWithFormat: @"%@/%@.%@.cache",
-								      _path,
-								      [theName substringToIndex: ([theName length]-[aString length])],
-								      aString]
-					  handler: nil];
+        [[NSFileManager defaultManager] removeItemAtPath: [NSString stringWithFormat: @"%@/%@.%@.cache",
+                                                           _path,
+                                                           [theName substringToIndex: ([theName length]-[aString length])],
+                                                           aString]
+                                                   error: nil];
 	}
 
       // Rebuild the folder tree
@@ -668,10 +686,10 @@
 	  
 	  if ([theEntries count] == 0)
 	    {
-	      aBOOL = [aFileManager movePath: [NSString stringWithFormat: @"%@/%@",_path, theName]
-				    toPath: [NSString stringWithFormat: @"%@/%@",  _path, theNewName]
-				    handler: nil];
-	      if (aBOOL)
+            aBOOL = [aFileManager moveItemAtPath: [NSString stringWithFormat: @"%@/%@",_path, theName]
+                                          toPath: [NSString stringWithFormat: @"%@/%@",  _path, theNewName]
+                                           error: nil];
+            if (aBOOL)
 		{
 		  POST_NOTIFICATION(PantomimeFolderRenameCompleted, self, info);
 		  PERFORM_SELECTOR_3(self, @selector(folderRenameCompleted:), PantomimeFolderRenameCompleted, info);
@@ -725,10 +743,10 @@
       
 
       // We rename the mailbox
-      aBOOL = [aFileManager movePath: [NSString stringWithFormat: @"%@/%@", _path, theName]
-			    toPath: [NSString stringWithFormat: @"%@/%@", _path, theNewName]
-			    handler: nil];
-      
+        aBOOL = [aFileManager moveItemAtPath: [NSString stringWithFormat: @"%@/%@", _path, theName]
+                                      toPath: [NSString stringWithFormat: @"%@/%@", _path, theNewName]
+                                       error: nil];
+        
       // We rename the cache, if the store rename was successful
       if (aBOOL)
 	{
@@ -737,17 +755,17 @@
 	  str1 = [theName lastPathComponent];
 	  str2 = [theNewName lastPathComponent];
 	  
-	  [[NSFileManager defaultManager] movePath: [NSString stringWithFormat: @"%@/%@.%@.cache",
-							      _path,
-							      [theName substringToIndex:
-									 ([theName length] - [str1 length])],
-							      str1]
-					  toPath: [NSString stringWithFormat: @"%@/%@.%@.cache",
-							    _path,
-							    [theNewName substringToIndex:
-									  ([theNewName length] - [str2 length])],
-							    str2]
-					  handler: nil];
+        [[NSFileManager defaultManager] moveItemAtPath: [NSString stringWithFormat: @"%@/%@.%@.cache",
+                                                         _path,
+                                                         [theName substringToIndex:
+                                                          ([theName length] - [str1 length])],
+                                                         str1]
+                                                toPath: [NSString stringWithFormat: @"%@/%@.%@.cache",
+                                                         _path,
+                                                         [theNewName substringToIndex:
+                                                          ([theNewName length] - [str2 length])],
+                                                         str2]
+                                                 error: nil];
 	}
       
       // If the folder was open, we must re-open and re-lock the mbox file,

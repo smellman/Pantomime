@@ -70,7 +70,7 @@ static CWDNSManager *singleInstance = nil;
     {
       struct hostent *host_info;
 
-      host_info = gethostbyname([theName cString]);
+        host_info = gethostbyname([theName cStringUsingEncoding: NSUTF8StringEncoding]);
       
       if (host_info)
 	{

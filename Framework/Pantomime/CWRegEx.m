@@ -62,7 +62,7 @@
   
   if ((self = [super init]))
     {
-      status = regcomp(&_re, [thePattern cString], theFlags);
+        status = regcomp(&_re, [thePattern cStringUsingEncoding: NSUTF8StringEncoding], theFlags);
       if (status != 0)
         {
 	  error = malloc(255*sizeof(char));
@@ -118,7 +118,7 @@
   char *s, *error;
   regmatch_t rm[1];
   
-  s = (char*)[theString lossyCString];
+    s = (char*)[theString cStringUsingEncoding:NSUTF8StringEncoding];
   aMutableArray = [[NSMutableArray alloc] init];
   
   status = regexec(&_re, s, 1, rm, 0);

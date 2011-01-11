@@ -96,7 +96,6 @@ static unsigned short version = 1;
   NSDictionary *attributes;
   unsigned short int v;
   
-  //_table = NSCreateMapTable(NSObjectMapKeyCallBacks, NSObjectMapValueCallBacks, 128);
   _table = [[NSMutableDictionary alloc] initWithCapacity:128];
   _count = 0;
   
@@ -112,7 +111,8 @@ static unsigned short version = 1;
       abort();
     }
   
-  attributes = [[NSFileManager defaultManager] fileAttributesAtPath: thePath  traverseLink: NO];
+    NSError *error = nil;
+    attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: thePath error: &error];
 
   // If the cache exists, lets parse it.
   if ([[attributes objectForKey: NSFileSize] intValue])
@@ -147,7 +147,6 @@ static unsigned short version = 1;
 
 	  aUID = AUTORELEASE([[NSString alloc] initWithData: [NSData dataWithBytes: s  length: len]
 					       encoding: NSASCIIStringEncoding]);
-	  //NSMapInsert(_table, aUID, aDate);
       [_table setObject:aDate forKey:aUID];
 	}
       
