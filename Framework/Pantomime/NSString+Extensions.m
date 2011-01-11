@@ -55,6 +55,20 @@
 //
 @implementation NSString (PantomimeStringExtensions)
 
+- (NSString *) getUTF7Parts:(NSString *)toBase64String
+{
+    const char *utf16char = [toBase64String cStringUsingEncoding:NSUTF16BigEndianStringEncoding];
+    NSData *data = [NSData dataWithBytes:utf16char length:strlen(utf16char)];
+    NSData *base64eddata = [data encodeBase64WithLineLength:0];
+    NSString *base64edstr = [[NSString alloc] initWithData:base64eddata encoding:NSUTF8StringEncoding];
+    NSString *ret = [[base64edstr stringByReplacingOccurrencesOfString:@"/"
+                                                            withString:@","] 
+                     stringByReplacingOccurrencesOfString:@"="
+                     withString:@""];
+    
+    return ret;
+}
+
 - (NSString *) stringByTrimmingWhiteSpaces
 {
   NSMutableString *aMutableString;
@@ -226,7 +240,7 @@
   NSString *name;
   int i;
 
-  name = [[NSString stringWithCString: [theCharset bytes] length: [theCharset length]] lowercaseString];
+    name = [[NSString stringWithCString: [theCharset bytes] encoding: NSUTF8StringEncoding] lowercaseString];
   
   for (i = 0; i < sizeof(encodings)/sizeof(encodings[0]); i++)
     {
@@ -467,7 +481,42 @@
 //
 - (NSString *) modifiedUTF7String
 {
-  return self;
+    NSString *str = self;
+    unichar c;
+    uint index = 0;
+    BOOL nowBase64 = NO;
+    NSMutableString *toBase64String = [[NSMutableString alloc] initWithString:@""];
+    NSMutableString *result = [[NSMutableString alloc] initWithString:@""];
+    for (; index < [str length]; index++){
+        c = [str characterAtIndex:index];
+        if ((0x20 <= c && c <= 0x7e)) {
+            if (nowBase64) {
+                NSString *base64edstr = [self getUTF7Parts:toBase64String];
+                toBase64String = [[NSMutableString alloc] initWithString:@""];
+                [result appendString:base64edstr];
+                [result appendString:@"-"];
+                nowBase64 = NO;
+            }
+            if (c == 0x26) {
+                [result appendString:@"&-"];
+            } else {
+                [result appendString:[NSString stringWithCharacters:&c length:1]];
+            }
+        } else {
+            if (!nowBase64) {
+                nowBase64 = YES;
+                [result appendString:@"&"];
+            }
+            [toBase64String appendString:[NSString stringWithCharacters:&c length:1]];
+        }
+    }
+    if (nowBase64) {
+        NSString *base64edstr = [self getUTF7Parts:toBase64String];
+        [result appendString:base64edstr];
+        [result appendString:@"-"];
+        nowBase64 = NO;
+    }
+    return result;
 }
 
 
@@ -476,7 +525,54 @@
 //
 - (NSString *) stringFromModifiedUTF7
 {
-  return nil;
+    NSString *str = self;
+    __block NSMutableDictionary *replaceDict = [[NSMutableDictionary alloc] init]; // to use after block
+    id block = ^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
+        NSString *replaceStr = [str substringWithRange:[match rangeAtIndex:1]];
+        NSString *lastReplaceStr = nil;
+        if ([replaceStr length] == 0) {
+            // "&-" -> "&"
+            lastReplaceStr = @"&";
+        } else {
+            // modfied UTF-7 to Base64 step 1: "," -> "/"
+            NSString *after_tr = [replaceStr stringByReplacingOccurrencesOfString:@"," 
+                                                                       withString:@"/"];
+            NSMutableString *base64str = [[NSMutableString alloc] initWithString:after_tr];
+            // modfied UTF-7 to Base64 step 2: append "=" 
+            NSUInteger x = [after_tr length] % 4;
+            if (x > 0) {
+                for (int i = 0; i < x; i++) {
+                    [base64str appendString:@"="];
+                }
+            }
+            NSData *decodeBase64 = [[base64str dataUsingEncoding:NSUTF8StringEncoding] decodeBase64];
+            // note decode base64 is UTF-16BE
+            lastReplaceStr = [[NSString alloc] initWithData:decodeBase64 
+                                                   encoding:NSUTF16BigEndianStringEncoding];
+        }
+        NSString *replaceKey = [str substringWithRange:[match rangeAtIndex:0]];
+        [replaceDict setObject:lastReplaceStr forKey:replaceKey]; 
+    };
+    NSError *error = nil;
+    NSRegularExpression *regexp = 
+    [NSRegularExpression regularExpressionWithPattern:@"&(.*?)-"
+                                              options:0
+                                                error:&error];
+    if (error != nil) {
+        NSLog(@"%@", error);
+    } else {
+        NSRegularExpressionOptions options = 0;
+        NSRange range = NSMakeRange(0, str.length);
+        [regexp enumerateMatchesInString:str options:options range:range usingBlock:block];
+        id key;
+        for (key in [replaceDict allKeys]) {
+            NSString *fromString = (NSString *)key;
+            NSString *toString = (NSString *)[replaceDict objectForKey:key];
+            str = [str stringByReplacingOccurrencesOfString:fromString withString:toString];
+        }
+    }
+    return str;
+    
 }
 
 
