@@ -34,6 +34,7 @@
 
 #include <Foundation/NSBundle.h>
 #include <Foundation/NSTimeZone.h>
+#include <Foundation/NSCalendar.h>
 
 //
 //
@@ -510,9 +511,6 @@ int next_word(unsigned char *buf, unsigned int start, unsigned int len, unsigned
       [comps setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:tz]];
       NSDate *aReceivedDate = [calendar dateFromComponents:comps];
       [theMessage setReceivedDate:aReceivedDate];
-      [aReceivedDate release];
-      [comps release];
-      [calendar release];
       free(word);
     }
 }
