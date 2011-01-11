@@ -113,8 +113,7 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
   int fd;
   
   fd = (int)data;
-  //socket = (CFSocketRef)NSMapGet(fd_to_cfsocket, (void*)fd);
-  socket = (CFSocketRef)[fd_to_cfsocket valueForKey:(void*)fd];
+  socket = (CFSocketRef)[fd_to_cfsocket valueForKey:fd];
   
   // We prevent dealing with callbacks when the socket is NOT
   // in a connected state. This can happen, under OS X, if
@@ -149,8 +148,7 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
   int fd;
   
   fd = (int)data;
-  //socket = (CFSocketRef)NSMapGet(fd_to_cfsocket, (void*)fd);
-  socket = (CFSocketRef)[fd_to_cfsocket valueForKey:(void*)fd];
+  socket = (CFSocketRef)[fd_to_cfsocket valueForKey:fd];
   
   // See the description in -addEvent: type: watcher: forMode:.
   if (!socket)
@@ -774,8 +772,7 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
     }
   
   CFRunLoopAddSource(CFRunLoopGetCurrent(), _runLoopSource, kCFRunLoopCommonModes);
-//  NSMapInsert(fd_to_cfsocket, (void *)[_connection fd], (void *)_socket);
-  [fd_to_cfsocket setValue:(void *)_socket forKey:(void *)[_connection fd]];
+  [fd_to_cfsocket setValue:(int)_socket forKey:(int)[_connection fd]];
     
   //NSLog(@"Adding watchers on %d", [_connection fd]);
 
@@ -870,8 +867,7 @@ void socket_callback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address
       CFSocketInvalidate(_socket);
     }
 
-//  NSMapRemove(fd_to_cfsocket, (void *)[_connection fd]);
-  [fd_to_cfsocket removeValueForKey:(void *)[_connection fd]];
+  [fd_to_cfsocket removeValueForKey:[_connection fd]];
   CFRelease(_socket);
   free(_context);
 }
