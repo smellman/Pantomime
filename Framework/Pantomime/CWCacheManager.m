@@ -138,4 +138,10 @@
 #endif
 }
 
+// for compile error
+- (unsigned int) count
+{
+    return 0;
+}
+
 @end
