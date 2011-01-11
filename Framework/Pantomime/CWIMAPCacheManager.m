@@ -57,7 +57,6 @@ static unsigned short version = 1;
 
   self = [super initWithPath: thePath];
 
-//  _table = NSCreateMapTable(NSIntMapKeyCallBacks, NSObjectMapValueCallBacks, 128);
   _table = [[NSMutableDictionary alloc] initWithCapacity:128];
   _count = _UIDValidity = 0;
   _folder = theFolder;
@@ -76,10 +75,12 @@ static unsigned short version = 1;
       abort();
     }
 
-  attributes = [[NSFileManager defaultManager] fileAttributesAtPath: thePath  traverseLink: NO];
+    NSError *error = nil;
+    attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: thePath  error: &error];
 
+    
   // If the cache exists, lets parse it.
-  if ([[attributes objectForKey: NSFileSize] intValue])
+  if (error == nil && [[attributes objectForKey: NSFileSize] intValue])
     {
       v = read_unsigned_short(_fd);
 
@@ -361,8 +362,13 @@ static unsigned short version = 1;
       abort();
     }
   
-  attributes = [[NSFileManager defaultManager] fileAttributesAtPath: [self path]  traverseLink: NO];
+    NSError *error = nil;
+    attributes = [[NSFileManager defaultManager] attributesOfItemAtPath: [self path] error: &error];
   
+    if (error != nil) {
+        NSLog(@"can't get file attribute");
+        abort();
+    }
   buf = (unsigned char *)malloc([[attributes objectForKey: NSFileSize] intValue]);
   total_length = 0;
 
